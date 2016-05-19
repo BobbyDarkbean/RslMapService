@@ -1,0 +1,43 @@
+*~
+*.autosave
+*.a
+*.core
+*.o
+*.obj
+*.so
+*.so.*
+*.debug
+Makefile*
+*.pro.user*
+build*/
+
+# xemacs temporary files
+*.flc
+
+# Vim temporary files
+.*.swp
+
+# Visual Studio generated files
+*.ib_pdb_index
+*.idb
+*.ilk
+*.pdb
+*.sln
+*.suo
+*.vcproj
+*vcproj.*.*.user
+*.ncb
+*.sdf
+*.opensdf
+*.vcxproj
+*vcxproj.*
+debug/
+release/
+
+# MinGW generated files
+*.Debug
+*.Release
+
+# Binaries
+*.dll
+*.exe
