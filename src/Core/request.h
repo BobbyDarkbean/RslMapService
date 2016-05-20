@@ -3,7 +3,7 @@
 
 #include <QMetaType>
 #include <QSharedDataPointer>
-#include "rms_shared.h"
+#include "rmscore_shared.h"
 
 namespace Rsl {
 namespace MapService {

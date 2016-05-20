@@ -1,7 +1,7 @@
 #ifndef RMS_GLOBAL_H
 #define RMS_GLOBAL_H
 
-#include "rms_shared.h"
+#include "rmscore_shared.h"
 
 namespace Rsl {
 namespace MapService {

@@ -6,7 +6,7 @@ TARGET = RmsCore
 HEADERS += \
     request.h \
     rms_global.h \
-    rms_shared.h \
+    rmscore_shared.h \
     user.h
 
 SOURCES += \

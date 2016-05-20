@@ -1,5 +1,5 @@
-#ifndef RMS_SHARED_H
-#define RMS_SHARED_H
+#ifndef RMSCORE_SHARED_H
+#define RMSCORE_SHARED_H
 
 #include <qobjectdefs.h>
 
@@ -9,4 +9,4 @@
 #define RMS_CORE_SHARED Q_DECL_IMPORT
 #endif
 
-#endif // RMS_SHARED_H
+#endif // RMSCORE_SHARED_H
