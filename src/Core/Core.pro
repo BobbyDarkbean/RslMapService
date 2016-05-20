@@ -4,11 +4,13 @@ QT = core
 TARGET = RmsCore
 
 HEADERS += \
+    request.h \
     rms_global.h \
     rms_shared.h \
     user.h
 
 SOURCES += \
+    request.cpp \
     rms_global.cpp \
     user.cpp
 
