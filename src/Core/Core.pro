@@ -1,6 +1,7 @@
 TEMPLATE = lib
 QT = core
 
+DESTDIR = ../bin
 TARGET = RmsCore
 
 HEADERS += \

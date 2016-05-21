@@ -1,6 +1,7 @@
 TEMPLATE = lib
 QT = core sql
 
+DESTDIR = ../bin
 TARGET = RmsData
 
 HEADERS += \
