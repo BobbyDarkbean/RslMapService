@@ -4,4 +4,5 @@ CONFIG += ordered c++11
 SUBDIRS += \
     Core \
     Data \
-    Logic
+    Logic \
+    App
