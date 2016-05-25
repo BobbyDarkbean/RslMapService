@@ -1,6 +1,7 @@
 CREATE TABLE employees (
-    id INTEGER PRIMARY KEY,
-    name VARCHAR
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name VARCHAR,
+    isactive INTEGER
 );
 
 CREATE TABLE currentusers (
