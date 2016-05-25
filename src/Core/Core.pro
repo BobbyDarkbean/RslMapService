@@ -1,4 +1,5 @@
 TEMPLATE = lib
+CONFIG += c++11
 QT = core
 
 DESTDIR = ../bin
