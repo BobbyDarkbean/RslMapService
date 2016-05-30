@@ -10,8 +10,8 @@ const QString APP_NAME("Map department service");
 const QString SETTINGS_PATH("rms.ini");
 }
 
-Application::Application(int &argc, char **argv) :
-    QApplication(argc, argv)
+Application::Application(int &argc, char **argv)
+    : QApplication(argc, argv)
 {
     setApplicationName(APP_NAME);
 
