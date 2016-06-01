@@ -6,9 +6,12 @@ DESTDIR = ../bin
 TARGET = RmsLogic
 
 INCLUDEPATH += \
+    ../Core \
     ../Data
 
 LIBS += -L../bin -lRmsCore -lRmsData
+
+include(itemmodels/ItemModels.pri)
 
 HEADERS += \
     rmslogic_shared.h \
