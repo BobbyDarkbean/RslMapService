@@ -6,13 +6,16 @@ DESTDIR = ../bin
 TARGET = RmsApp
 
 INCLUDEPATH += \
-    ../Logic
+    ../Logic \
+    ../Gui
 
-LIBS += -L../bin -lRmsLogic
+LIBS += -L../bin -lRmsLogic -lRmsGui
 
 HEADERS += \
-    application.h
+    application.h \
+    mainwindow.h
 
 SOURCES += \
     application.cpp \
-    main.cpp
+    main.cpp \
+    mainwindow.cpp
