@@ -5,6 +5,13 @@ QT = core sql
 DESTDIR = ../bin
 TARGET = RmsData
 
+INCLUDEPATH += \
+    ../Core
+
+LIBS += -L../bin -lRmsCore
+
+include(dataadapters/DataAdapters.pri)
+
 HEADERS += \
     datastorageconfigurator.h \
     queryloader.h \

@@ -2,5 +2,9 @@
     <qresource prefix="/data">
         <file alias="dbconfig.sql">sql/dbconfig.sql</file>
         <file alias="dbinit.sql">sql/dbinit.sql</file>
+        <file alias="employee-delete.sql">sql/employee-delete.sql</file>
+        <file alias="employee-insert.sql">sql/employee-insert.sql</file>
+        <file alias="employee-select.sql">sql/employee-select.sql</file>
+        <file alias="employee-update.sql">sql/employee-update.sql</file>
     </qresource>
 </RCC>
