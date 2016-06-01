@@ -12,6 +12,7 @@ INCLUDEPATH += \
 LIBS += -L../bin -lRmsCore -lRmsLogic
 
 include(itemdelegates/ItemDelegates.pri)
+include(widgets/Widgets.pri)
 
 HEADERS += \
     rmsgui_shared.h
