@@ -5,4 +5,5 @@ SUBDIRS += \
     Core \
     Data \
     Logic \
+    Gui \
     App
