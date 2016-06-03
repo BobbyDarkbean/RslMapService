@@ -14,10 +14,14 @@ LIBS += -L../bin -lRmsCore -lRmsData
 include(itemmodels/ItemModels.pri)
 
 HEADERS += \
+    defaultsignaltrigger.h \
     rmslogic_shared.h \
+    signaltrigger.h \
     workflow.h
 
 SOURCES += \
+    defaultsignaltrigger.cpp \
+    signaltrigger.cpp \
     workflow.cpp
 
 DEFINES += \
