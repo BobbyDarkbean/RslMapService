@@ -3,7 +3,6 @@
 
 #include <QWidget>
 #include <QScopedPointer>
-#include "rmsgui_shared.h"
 
 namespace Rsl {
 namespace MapService {
@@ -12,7 +11,7 @@ namespace Impl {
 struct EmployeeEditorRepresentation;
 }
 
-class RMS_GUI_SHARED EmployeeEditor : public QWidget
+class EmployeeEditor : public QWidget
 {
     Q_OBJECT
 
