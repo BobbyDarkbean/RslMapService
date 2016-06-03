@@ -23,6 +23,7 @@ public:
     ~EmployeeManagementWidget();
 
 signals:
+    void employeeEditPerformed(bool success);
     void employeeAppendingPerformed(bool success);
     void employeeRemovalPerformed(int count);
 

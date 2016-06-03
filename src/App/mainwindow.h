@@ -23,6 +23,7 @@ protected:
     void changeEvent(QEvent *);
 
 private slots:
+    void reportEmployeeEdited(bool success);
     void reportEmployeeAppending(bool success);
     void reportEmployeeRemoval(int count);
 

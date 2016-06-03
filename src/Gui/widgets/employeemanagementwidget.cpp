@@ -12,6 +12,7 @@
 #include "itemmodels/employeemodel.h"
 #include "itemmodels/employeesortfilterproxymodel.h"
 #include "itemdelegates/employeedelegate.h"
+#include "itemdelegates/employeeeditedsignaltrigger.h"
 
 #include "employeemanagementwidget.h"
 
@@ -120,6 +121,9 @@ void EmployeeManagementWidgetRepresentation::init(EmployeeManagementWidget *w)
 
     QItemSelectionModel *selectionModel = employeesView->selectionModel();
     QObject::connect(selectionModel,        &QItemSelectionModel::selectionChanged, w,  &W::updateRemoveButtonState);
+
+    EmployeeEditedSignalTrigger *employeeEditedSignal = employeeDelegate->employeeEdited();
+    QObject::connect(employeeEditedSignal,  &EmployeeEditedSignalTrigger::activated,w,  &W::employeeEditPerformed);
 
     void (QComboBox::*qComboBoxCurrentIndexChanged)(int) = &QComboBox::currentIndexChanged;
 

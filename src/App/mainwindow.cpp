@@ -37,6 +37,7 @@ void MainWindowRepresentation::init(MainWindow *w)
     typedef MainWindow W;
     typedef EmployeeManagementWidget EMW;
 
+    QObject::connect(employeeManagementWidget,  &EMW::employeeEditPerformed,        w,  &W::reportEmployeeEdited);
     QObject::connect(employeeManagementWidget,  &EMW::employeeAppendingPerformed,   w,  &W::reportEmployeeAppending);
     QObject::connect(employeeManagementWidget,  &EMW::employeeRemovalPerformed,     w,  &W::reportEmployeeRemoval);
 
@@ -65,6 +66,9 @@ void MainWindow::changeEvent(QEvent *e)
     if (e->type() == QEvent::LanguageChange)
         m->retranslateUi();
 }
+
+void MainWindow::reportEmployeeEdited(bool success)
+{ statusBar()->showMessage(success ? tr("EMPLOYEE_EDIT_ACCEPTED") : tr("EMPLOYEE_EDIT_FAILED")); }
 
 void MainWindow::reportEmployeeAppending(bool success)
 { statusBar()->showMessage(success ? tr("EMPLOYEE_APPEND_ACCEPTED") : tr("EMPLOYEE_APPEND_FAILED")); }
