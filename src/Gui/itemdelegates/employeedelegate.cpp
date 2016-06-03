@@ -3,6 +3,7 @@
 #include "employee.h"
 #include "itemmodels/employeemodel.h"
 #include "employeeeditor.h"
+#include "employeeeditedsignaltrigger.h"
 
 #include "employeedelegate.h"
 
@@ -13,17 +14,20 @@ namespace Impl {
 
 struct EmployeeDelegateRepresentation
 {
-    void init();
+    void init(EmployeeDelegate *q);
     QPalette palette(const QPalette &originalPalette, bool selected) const;
     QSize sizeHint(const QRect &optionRect) const;
 
     QScopedPointer<EmployeeEditor> presenter;
+    EmployeeEditedSignalTrigger *employeeEditedSignalTrigger;
 };
 
-void EmployeeDelegateRepresentation::init()
+void EmployeeDelegateRepresentation::init(EmployeeDelegate *q)
 {
     presenter.reset(new EmployeeEditor);
     presenter->setPresentationMode(true);
+
+    employeeEditedSignalTrigger = new EmployeeEditedSignalTrigger(q);
 }
 
 QPalette EmployeeDelegateRepresentation::palette(const QPalette &originalPalette, bool selected) const
@@ -51,7 +55,7 @@ EmployeeDelegate::EmployeeDelegate(QObject *parent)
     : QStyledItemDelegate(parent)
     , m(new Impl::EmployeeDelegateRepresentation)
 {
-    m->init();
+    m->init(this);
 }
 
 EmployeeDelegate::~EmployeeDelegate()
@@ -116,7 +120,14 @@ void EmployeeDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, 
     employee.setName(employeeEditor->name().trimmed().simplified());
     employee.setActive(employeeEditor->isActive());
 
-    model->setData(index, QVariant::fromValue(employee), Qt::EditRole);
+    bool editAccepted = model->setData(index, QVariant::fromValue(employee), Qt::EditRole);
+    m->employeeEditedSignalTrigger->setAccepted(editAccepted);
+    m->employeeEditedSignalTrigger->activate();
+}
+
+EmployeeEditedSignalTrigger *EmployeeDelegate::employeeEdited() const
+{
+    return m->employeeEditedSignalTrigger;
 }
 
 } // namespace MapService
