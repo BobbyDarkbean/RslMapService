@@ -2,6 +2,14 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="en_US">
 <context>
+    <name>Rsl::MapService::Application</name>
+    <message>
+        <location filename="../application.cpp" line="53"/>
+        <source>APP_NAME</source>
+        <translation>Map department service</translation>
+    </message>
+</context>
+<context>
     <name>Rsl::MapService::MainWindow</name>
     <message>
         <location filename="../mainwindow.cpp" line="73"/>
