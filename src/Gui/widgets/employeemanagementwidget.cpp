@@ -191,14 +191,14 @@ void EmployeeManagementWidgetRepresentation::retranslateUi()
 {
     typedef EmployeeSortFilterProxyModel PrxMdl;
 
-    filterCriterionLabel->setText(QObject::tr("FILTER_CRITERION"));
+    filterCriterionLabel->setText(QObject::tr("FILTER_CRITERION", "labeltext"));
 
     for (int i = 0; i < filterCriterionBox->count(); ++i) {
         PrxMdl::FilterCriterion filterCriterion = PrxMdl::FilterCriterion(i);
         filterCriterionBox->setItemText(i, PrxMdl::toString(filterCriterion));
     }
 
-    sortCriterionLabel->setText(QObject::tr("SORT_CRITERION"));
+    sortCriterionLabel->setText(QObject::tr("SORT_CRITERION", "labeltext"));
 
     for (int i = 0; i < sortCriterionBox->count(); ++i) {
         PrxMdl::SortCriterion sortCriterion = PrxMdl::SortCriterion(i);
