@@ -236,6 +236,8 @@ void EmployeeManagementWidget::changeEvent(QEvent *e)
 {
     if (e->type() == QEvent::LanguageChange)
         m->retranslateUi();
+    else
+        QWidget::changeEvent(e);
 }
 
 void EmployeeManagementWidget::filterEmployees(int filterCriterion)

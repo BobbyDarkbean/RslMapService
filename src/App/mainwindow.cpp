@@ -65,6 +65,8 @@ void MainWindow::changeEvent(QEvent *e)
 {
     if (e->type() == QEvent::LanguageChange)
         m->retranslateUi();
+    else
+        QMainWindow::changeEvent(e);
 }
 
 void MainWindow::reportEmployeeEdited(bool success)
