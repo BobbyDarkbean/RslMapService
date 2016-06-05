@@ -15,12 +15,14 @@ include(itemmodels/ItemModels.pri)
 
 HEADERS += \
     defaultsignaltrigger.h \
+    rmslogic_module.h \
     rmslogic_shared.h \
     signaltrigger.h \
     workflow.h
 
 SOURCES += \
     defaultsignaltrigger.cpp \
+    rmslogic_module.cpp \
     signaltrigger.cpp \
     workflow.cpp
 

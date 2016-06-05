@@ -15,11 +15,13 @@ include(dataadapters/DataAdapters.pri)
 HEADERS += \
     datastorageconfigurator.h \
     queryloader.h \
+    rmsdata_module.h \
     rmsdata_shared.h
 
 SOURCES += \
     datastorageconfigurator.cpp \
-    queryloader.cpp
+    queryloader.cpp \
+    rmsdata_module.cpp
 
 RESOURCES += \
     resources.qrc

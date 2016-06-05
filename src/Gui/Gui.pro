@@ -15,7 +15,11 @@ include(itemdelegates/ItemDelegates.pri)
 include(widgets/Widgets.pri)
 
 HEADERS += \
+    rmsgui_module.h \
     rmsgui_shared.h
+
+SOURCES += \
+    rmsgui_module.cpp
 
 DEFINES += \
     RMS_GUI_LIB
