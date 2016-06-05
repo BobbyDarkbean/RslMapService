@@ -32,6 +32,7 @@ void EmployeeEditorRepresentation::init(EmployeeEditor *w)
     nameBox = new QLineEdit;
     idLabel = new QLabel;
 
+    isActiveBox->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Minimum);
     nameBox->setValidator(new QRegExpValidator(QRegExp(EmployeeNameRegExp), nameBox));
 
     QFont font = w->font();
