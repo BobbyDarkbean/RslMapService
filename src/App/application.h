@@ -2,9 +2,14 @@
 #define APPLICATION_H
 
 #include <QApplication>
+#include <QScopedPointer>
 
 namespace Rsl {
 namespace MapService {
+
+namespace Impl {
+struct ApplicationRepresentation;
+}
 
 class Application : public QApplication
 {
@@ -16,6 +21,7 @@ public:
 
 private:
     Q_DISABLE_COPY(Application)
+    QScopedPointer<Impl::ApplicationRepresentation> m;
 };
 
 } // namespace MapService
