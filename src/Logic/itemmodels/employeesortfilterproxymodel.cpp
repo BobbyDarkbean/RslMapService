@@ -67,9 +67,9 @@ void EmployeeSortFilterProxyModel::setSortCriterion(SortCriterion value)
 QString EmployeeSortFilterProxyModel::toString(SortCriterion sortCriterion)
 {
     switch (sortCriterion) {
-    case SortCriterion_Id:          return tr("SORT_CRITERION_ID");
-    case SortCriterion_Name:        return tr("SORT_CRITERION_NAME");
-    case SortCriterion_IsActive:    return tr("SORT_CRITERION_IS_ACTIVE");
+    case SortCriterion_Id:          return tr("ID", "sortCriterion");
+    case SortCriterion_Name:        return tr("NAME", "sortCriterion");
+    case SortCriterion_IsActive:    return tr("IS_ACTIVE", "sortCriterion");
     default:
         break;
     }
@@ -86,9 +86,9 @@ void EmployeeSortFilterProxyModel::setFilterCriterion(FilterCriterion value)
 QString EmployeeSortFilterProxyModel::toString(FilterCriterion filterCriterion)
 {
     switch (filterCriterion) {
-    case FilterCriterion_AcceptActive:      return tr("FILTER_CRITERION_ACCEPT_ACTIVE");
-    case FilterCriterion_AcceptInactive:    return tr("FILTER_CRITERION_ACCEPT_INACTIVE");
-    case FilterCriterion_AcceptAll:         return tr("FILTER_CRITERION_ACCEPT_ALL");
+    case FilterCriterion_AcceptActive:      return tr("ACTIVE", "filterCriterion");
+    case FilterCriterion_AcceptInactive:    return tr("INACTIVE", "filterCriterion");
+    case FilterCriterion_AcceptAll:         return tr("ALL", "filterCriterion");
     default:
         break;
     }
