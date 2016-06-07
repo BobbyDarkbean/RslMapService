@@ -206,8 +206,8 @@ void EmployeeManagementWidgetRepresentation::retranslateUi()
     }
 
     sortOrderBox->setTitle(QObject::tr("SORT_ORDER"));
-    ascOrderButton->setText(QObject::tr("SORT_ORDER_ASCENDING"));
-    descOrderButton->setText(QObject::tr("SORT_ORDER_DESCENDING"));
+    ascOrderButton->setText(QObject::tr("ASCENDING", "sortOrder"));
+    descOrderButton->setText(QObject::tr("DESCENDING", "sortOrder"));
 
     employeesGroup->setTitle(EmployeeManagementWidget::tr("EMPLOYEES"));
     reloadEmployeesButton->setText(QObject::tr("UPDATE"));
