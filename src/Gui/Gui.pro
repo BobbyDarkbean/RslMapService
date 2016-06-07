@@ -21,5 +21,9 @@ HEADERS += \
 SOURCES += \
     rmsgui_module.cpp
 
+TRANSLATIONS += \
+    languages/gui.en_US.ts \
+    languages/gui.ru_RU.ts
+
 DEFINES += \
     RMS_GUI_LIB

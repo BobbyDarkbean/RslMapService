@@ -20,5 +20,9 @@ SOURCES += \
     rmscore_module.cpp \
     user.cpp
 
+TRANSLATIONS += \
+    languages/core.en_US.ts \
+    languages/core.ru_RU.ts
+
 DEFINES += \
     RMS_CORE_LIB

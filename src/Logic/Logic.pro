@@ -26,5 +26,9 @@ SOURCES += \
     signaltrigger.cpp \
     workflow.cpp
 
+TRANSLATIONS += \
+    languages/logic.en_US.ts \
+    languages/logic.ru_RU.ts
+
 DEFINES += \
     RMS_LOGIC_LIB

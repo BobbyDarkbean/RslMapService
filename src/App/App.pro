@@ -22,3 +22,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     rmsapp_module.cpp
+
+TRANSLATIONS += \
+    languages/app.en_US.ts \
+    languages/app.ru_RU.ts
