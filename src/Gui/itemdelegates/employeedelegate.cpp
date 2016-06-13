@@ -2,7 +2,7 @@
 #include "employee.h"
 #include "itemmodels/employeemodel.h"
 #include "employeeeditor.h"
-#include "employeeeditedsignaltrigger.h"
+#include "editedsignaltrigger.h"
 
 #include "employeedelegate.h"
 
@@ -18,7 +18,7 @@ struct EmployeeDelegateRepresentation
     QSize sizeHint(const QRect &optionRect) const;
 
     QScopedPointer<EmployeeEditor> presenter;
-    EmployeeEditedSignalTrigger *employeeEditedSignalTrigger;
+    EditedSignalTrigger *employeeEditedSignalTrigger;
 };
 
 void EmployeeDelegateRepresentation::init(EmployeeDelegate *q)
@@ -26,7 +26,7 @@ void EmployeeDelegateRepresentation::init(EmployeeDelegate *q)
     presenter.reset(new EmployeeEditor);
     presenter->setPresentationMode(true);
 
-    employeeEditedSignalTrigger = new EmployeeEditedSignalTrigger(q);
+    employeeEditedSignalTrigger = new EditedSignalTrigger(q);
 }
 
 QPalette EmployeeDelegateRepresentation::palette(const QPalette &originalPalette, bool selected) const
@@ -122,7 +122,7 @@ void EmployeeDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, 
     m->employeeEditedSignalTrigger->activate();
 }
 
-EmployeeEditedSignalTrigger *EmployeeDelegate::employeeEdited() const
+EditedSignalTrigger *EmployeeDelegate::employeeEdited() const
 {
     return m->employeeEditedSignalTrigger;
 }

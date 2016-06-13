@@ -7,7 +7,7 @@
 namespace Rsl {
 namespace MapService {
 
-class EmployeeEditedSignalTrigger;
+class EditedSignalTrigger;
 
 namespace Impl {
 struct EmployeeDelegateRepresentation;
@@ -28,7 +28,7 @@ public:
     void setEditorData(QWidget *editor, const QModelIndex &index) const Q_DECL_OVERRIDE;
     void setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const Q_DECL_OVERRIDE;
 
-    EmployeeEditedSignalTrigger *employeeEdited() const;
+    EditedSignalTrigger *employeeEdited() const;
 
 private:
     Q_DISABLE_COPY(EmployeeDelegate)

@@ -1,9 +1,9 @@
 HEADERS += \
+    itemdelegates/editedsignaltrigger.h \
     itemdelegates/employeedelegate.h \
-    itemdelegates/employeeeditedsignaltrigger.h \
     itemdelegates/employeeeditor.h
 
 SOURCES += \
+    itemdelegates/editedsignaltrigger.cpp \
     itemdelegates/employeedelegate.cpp \
-    itemdelegates/employeeeditedsignaltrigger.cpp \
     itemdelegates/employeeeditor.cpp
