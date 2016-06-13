@@ -1,5 +1,4 @@
 #include <QPainter>
-#include <QScopedPointer>
 #include "employee.h"
 #include "itemmodels/employeemodel.h"
 #include "employeeeditor.h"
@@ -64,26 +63,24 @@ EmployeeDelegate::~EmployeeDelegate()
 
 void EmployeeDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
-    QStyleOptionViewItem opt = option;
-
-    bool selected = opt.state & QStyle::State_Selected;
+    bool selected = option.state & QStyle::State_Selected;
     if (selected) {
-        painter->fillRect(opt.rect, opt.palette.highlight().color());
+        painter->fillRect(option.rect, option.palette.highlight().color());
     }
 
     m->presenter->setActive(index.data(EmployeeModel::DataRole_IsActive).toBool());
     m->presenter->setName(index.data(EmployeeModel::DataRole_Name).toString());
     m->presenter->setId(index.data(EmployeeModel::DataRole_Id).toInt());
 
-    m->presenter->setPalette(m->palette(opt.palette, selected));
-    m->presenter->setFixedWidth(opt.rect.width());
+    m->presenter->setPalette(m->palette(option.palette, selected));
+    m->presenter->setFixedWidth(option.rect.width());
 
     QPixmap pixmap(m->sizeHint(option.rect));
     m->presenter->render(&pixmap);
-    painter->drawPixmap(opt.rect.topLeft(), pixmap);
+    painter->drawPixmap(option.rect.topLeft(), pixmap);
 
-    if (opt.state & QStyle::State_MouseOver) {
-        QStyledItemDelegate::paint(painter, opt, index);
+    if (option.state & QStyle::State_MouseOver) {
+        QStyledItemDelegate::paint(painter, option, index);
     }
 }
 
