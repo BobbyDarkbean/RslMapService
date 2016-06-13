@@ -20,6 +20,9 @@ public:
     User &operator=(const User &);
     ~User();
 
+    int id() const;
+    void setId(int);
+
     int hallNumber() const;
     void setHallNumber(int);
 

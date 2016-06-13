@@ -14,6 +14,7 @@ class UserSharedRepresentation : public QSharedData
 public:
     UserSharedRepresentation();
 
+    int id;
     int hallNumber;
     int cardNumber;
     QString name;
@@ -24,7 +25,8 @@ private:
 };
 
 UserSharedRepresentation::UserSharedRepresentation()
-    : hallNumber(ReadingHall_Unspecified)
+    : id(0)
+    , hallNumber(ReadingHall_Unspecified)
     , cardNumber(0)
     , name()
     , isOff(false)
@@ -52,6 +54,12 @@ User &User::operator=(const User &other)
 User::~User()
 {
 }
+
+int User::id() const
+{ return m->id; }
+
+void User::setId(int value)
+{ m->id = value; }
 
 int User::hallNumber() const
 { return m->hallNumber; }
