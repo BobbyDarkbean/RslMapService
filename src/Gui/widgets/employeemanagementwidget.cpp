@@ -8,6 +8,7 @@
 #include <QBoxLayout>
 #include <QMessageBox>
 #include <QEvent>
+#include "rms_global.h"
 #include "employee.h"
 #include "itemmodels/employeemodel.h"
 #include "itemmodels/employeesortfilterproxymodel.h"
@@ -98,7 +99,7 @@ void EmployeeManagementWidgetRepresentation::init(EmployeeManagementWidget *w)
     sortCriterionLabel->setBuddy(sortCriterionBox);
     newEmployeeLabel->setBuddy(newEmployeeBox);
 
-    newEmployeeBox->setValidator(new QRegExpValidator(QRegExp(EmployeeNameRegExp), newEmployeeBox));
+    newEmployeeBox->setValidator(new QRegExpValidator(QRegExp(WrittenNameRegExp), newEmployeeBox));
 
     filterCriterionBox->addItem(QString(), EmployeeSortFilterProxyModel::FilterCriterion_AcceptActive);
     filterCriterionBox->addItem(QString(), EmployeeSortFilterProxyModel::FilterCriterion_AcceptInactive);

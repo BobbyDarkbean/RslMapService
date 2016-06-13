@@ -3,7 +3,7 @@
 #include <QCheckBox>
 #include <QRegExpValidator>
 #include <QBoxLayout>
-#include "employee.h"
+#include "rms_global.h"
 
 #include "employeeeditor.h"
 
@@ -33,7 +33,7 @@ void EmployeeEditorRepresentation::init(EmployeeEditor *w)
     idLabel = new QLabel;
 
     isActiveBox->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Minimum);
-    nameBox->setValidator(new QRegExpValidator(QRegExp(EmployeeNameRegExp), nameBox));
+    nameBox->setValidator(new QRegExpValidator(QRegExp(WrittenNameRegExp), nameBox));
 
     QFont font = w->font();
     font.setItalic(true);

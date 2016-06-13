@@ -6,6 +6,8 @@
 namespace Rsl {
 namespace MapService {
 
+extern RMS_CORE_SHARED const QString WrittenNameRegExp;
+
 enum ReadingHall
 {
     ReadingHall_Unspecified,

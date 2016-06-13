@@ -8,8 +8,6 @@
 namespace Rsl {
 namespace MapService {
 
-extern RMS_CORE_SHARED const QString EmployeeNameRegExp;
-
 namespace Impl {
 class EmployeeSharedRepresentation;
 }

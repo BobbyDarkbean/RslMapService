@@ -6,8 +6,6 @@
 namespace Rsl {
 namespace MapService {
 
-const QString EmployeeNameRegExp(R"([\w\.\,\-\(\)\s]*)");
-
 namespace Impl {
 
 class EmployeeSharedRepresentation : public QSharedData

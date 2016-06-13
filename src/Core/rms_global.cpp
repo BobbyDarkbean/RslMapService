@@ -32,6 +32,8 @@ const char *request_status_strings[] = {
 };
 }
 
+const QString WrittenNameRegExp(R"([\w\.\,\-\(\)\s]*)");
+
 QString toString(DocumentType dt)
 {
     Q_ASSERT(DocumentType_MIN <= dt && dt <= DocumentType_MAX);
