@@ -78,10 +78,6 @@ void EmployeeDelegate::paint(QPainter *painter, const QStyleOptionViewItem &opti
     QPixmap pixmap(m->sizeHint(option.rect));
     m->presenter->render(&pixmap);
     painter->drawPixmap(option.rect.topLeft(), pixmap);
-
-    if (option.state & QStyle::State_MouseOver) {
-        QStyledItemDelegate::paint(painter, option, index);
-    }
 }
 
 QSize EmployeeDelegate::sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const
