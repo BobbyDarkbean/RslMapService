@@ -38,6 +38,7 @@ void EmployeeEditorRepresentation::init(EmployeeEditor *w)
     QFont font = w->font();
     font.setItalic(true);
     idLabel->setFont(font);
+    idLabel->setDisabled(true);
 
     const int InterSpacing = 2;
 
