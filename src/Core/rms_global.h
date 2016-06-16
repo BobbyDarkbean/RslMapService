@@ -20,6 +20,11 @@ enum ReadingHall
     ReadingHall_MAX = ReadingHall_Fourth
 };
 
+enum {
+    CardNumberMinimum = 0,
+    CardNumberMaximum = 9999999
+};
+
 enum DocumentType
 {
     DocumentType_Map,
