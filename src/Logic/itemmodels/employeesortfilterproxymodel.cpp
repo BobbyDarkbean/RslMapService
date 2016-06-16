@@ -19,7 +19,7 @@ bool employeeLessThanByName(const Employee &a, const Employee &b)
     if (nameCompare == 0) {
         if (a.isActive() == b.isActive())
             return a.id() < b.id();
-        return a.isActive() && !b.isActive();
+        return a.isActive();
     }
     return nameCompare < 0;
 }
