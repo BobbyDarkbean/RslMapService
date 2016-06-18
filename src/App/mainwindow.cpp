@@ -70,6 +70,15 @@ void MainWindow::changeEvent(QEvent *e)
         QMainWindow::changeEvent(e);
 }
 
+void MainWindow::reportUserEdited(bool success)
+{ statusBar()->showMessage(success ? tr("USER_EDIT_ACCEPTED") : tr("USER_EDIT_FAILED")); }
+
+void MainWindow::reportUserAppending(bool success)
+{ statusBar()->showMessage(success ? tr("USER_APPEND_ACCEPTED") : tr("USER_APPEND_FAILED")); }
+
+void MainWindow::reportUserRemoval(int count)
+{ statusBar()->showMessage(tr("USERS_REMOVED_%1").arg(count)); }
+
 void MainWindow::reportEmployeeEdited(bool success)
 { statusBar()->showMessage(success ? tr("EMPLOYEE_EDIT_ACCEPTED") : tr("EMPLOYEE_EDIT_FAILED")); }
 
