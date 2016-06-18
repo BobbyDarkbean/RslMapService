@@ -116,7 +116,7 @@ void CurrentUserDelegate::setModelData(QWidget *editor, QAbstractItemModel *mode
     User user;
     user.setHallNumber(currentUserEditor->hallNumber());
     user.setCardNumber(currentUserEditor->cardNumber());
-    user.setName(currentUserEditor->name().trimmed().simplified());
+    user.setName(currentUserEditor->name().simplified());
     user.setOff(currentUserEditor->isOff());
 
     bool editAccepted = model->setData(index, QVariant::fromValue(user), Qt::EditRole);

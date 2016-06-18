@@ -266,7 +266,7 @@ void EmployeeManagementWidget::changeSortOrder()
 
 void EmployeeManagementWidget::submitNewEmployee()
 {
-    QString name = m->newEmployeeBox->text().trimmed().simplified();
+    QString name = m->newEmployeeBox->text().simplified();
     if (name.isEmpty())
         return;
 

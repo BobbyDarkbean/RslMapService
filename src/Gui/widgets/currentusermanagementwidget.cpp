@@ -284,7 +284,7 @@ void CurrentUserManagementWidget::changeSortOrder()
 
 void CurrentUserManagementWidget::submitNewUser()
 {
-    QString name = m->newUserNameBox->text().trimmed().simplified();
+    QString name = m->newUserNameBox->text().simplified();
     if (name.isEmpty())
         return;
 

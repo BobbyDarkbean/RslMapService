@@ -110,7 +110,7 @@ void EmployeeDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, 
     Q_ASSERT(employeeEditor);
 
     Employee employee;
-    employee.setName(employeeEditor->name().trimmed().simplified());
+    employee.setName(employeeEditor->name().simplified());
     employee.setActive(employeeEditor->isActive());
 
     bool editAccepted = model->setData(index, QVariant::fromValue(employee), Qt::EditRole);
