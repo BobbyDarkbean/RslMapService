@@ -232,8 +232,8 @@ void CurrentUserManagementWidgetRepresentation::retranslateUi()
     removeUserButton->setText(QObject::tr("REMOVE"));
 
     newUserGroup->setTitle(CurrentUserManagementWidget::tr("NEW_USER"));
-    newUserCardLabel->setText(QObject::tr("CARD_NUMBER"));
-    newUserNameLabel->setText(QObject::tr("NAME"));
+    newUserCardLabel->setText(QObject::tr("CARD_NUMBER", "labeltext"));
+    newUserNameLabel->setText(QObject::tr("NAME", "labeltext"));
     addUserButton->setText(QObject::tr("ADD"));
 }
 

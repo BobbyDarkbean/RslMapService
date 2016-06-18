@@ -4,7 +4,7 @@
 <context>
     <name>Rsl::MapService::Application</name>
     <message>
-        <location filename="../application.cpp" line="53"/>
+        <location filename="../application.cpp" line="58"/>
         <source>APP_NAME</source>
         <translation>Обслуживание читателей КГР</translation>
     </message>

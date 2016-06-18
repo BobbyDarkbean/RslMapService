@@ -215,7 +215,7 @@ void EmployeeManagementWidgetRepresentation::retranslateUi()
     removeEmployeeButton->setText(QObject::tr("REMOVE"));
 
     newEmployeeGroup->setTitle(EmployeeManagementWidget::tr("NEW_EMPLOYEE"));
-    newEmployeeLabel->setText(QObject::tr("NAME"));
+    newEmployeeLabel->setText(QObject::tr("NAME", "labeltext"));
     addEmployeeButton->setText(QObject::tr("ADD"));
 }
 

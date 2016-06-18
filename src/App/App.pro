@@ -25,6 +25,8 @@ SOURCES += \
 
 TRANSLATIONS += \
     languages/app.en_US.ts \
-    languages/app.ru_RU.ts \
+    languages/app.ru_RU.ts
+
+OTHER_FILES += \
     languages/rms.en_US.ts \
     languages/rms.ru_RU.ts
