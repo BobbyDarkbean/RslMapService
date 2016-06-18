@@ -2,6 +2,7 @@
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include "queryloader.h"
+#include "rmsdata_module.h"
 #include "employee.h"
 
 #include "employeedataadapter.h"
@@ -17,6 +18,8 @@ enum {
     Update,
     Delete
 };
+
+const QString LogContext("EmployeeDataAdapter");
 
 }
 
@@ -65,7 +68,8 @@ QList<Employee> EmployeeDataAdapter::select() const
 
     QSqlDatabase db = QSqlDatabase::database();
     QSqlQuery query(db);
-    query.exec(m->scripts[Select]);
+    bool success = query.exec(m->scripts[Select]);
+    logQueryExecution(LogContext, query, success);
 
     int idFieldIndex = query.record().indexOf("id");
     int nameFieldIndex = query.record().indexOf("name");
@@ -92,7 +96,9 @@ bool EmployeeDataAdapter::insert(const Employee &employee)
     query.bindValue(":name", employee.name());
     query.bindValue(":isactive", employee.isActive());
 
-    return query.exec();
+    bool success = query.exec();
+    logQueryExecution(LogContext, query, success);
+    return success;
 }
 
 bool EmployeeDataAdapter::update(const Employee &employee)
@@ -105,7 +111,9 @@ bool EmployeeDataAdapter::update(const Employee &employee)
     query.bindValue(":isactive", employee.isActive());
     query.bindValue(":id", employee.id());
 
-    return query.exec();
+    bool success = query.exec();
+    logQueryExecution(LogContext, query, success);
+    return success;
 }
 
 bool EmployeeDataAdapter::deleteById(int id)
@@ -116,7 +124,9 @@ bool EmployeeDataAdapter::deleteById(int id)
 
     query.bindValue(":id", id);
 
-    return query.exec();
+    bool success = query.exec();
+    logQueryExecution(LogContext, query, success);
+    return success;
 }
 
 } // namespace MapService

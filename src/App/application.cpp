@@ -1,5 +1,6 @@
 #include <QSettings>
 #include <QTranslator>
+#include "log.h"
 #include "workflow.h"
 
 #include "application.h"
@@ -10,6 +11,7 @@ namespace MapService {
 namespace {
 const QString SETTINGS_PATH("rms.ini");
 const QString TR_DIR("translations");
+const QString LOG_DIR("log");
 }
 
 namespace Impl {
@@ -41,6 +43,8 @@ Application::Application(int &argc, char **argv)
     : QApplication(argc, argv)
     , m(new Impl::ApplicationRepresentation)
 {
+    Log::initPath(LOG_DIR);
+
     WorkFlow wf;
     wf.connectDataStorage();
 

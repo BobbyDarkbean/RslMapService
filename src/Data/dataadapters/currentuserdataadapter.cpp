@@ -2,6 +2,7 @@
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include "queryloader.h"
+#include "rmsdata_module.h"
 #include "user.h"
 
 #include "currentuserdataadapter.h"
@@ -17,6 +18,8 @@ enum {
     Update,
     Delete
 };
+
+const QString LogContext("CurrentUserDataAdapter");
 
 }
 
@@ -65,7 +68,8 @@ QList<User> CurrentUserDataAdapter::select() const
 
     QSqlDatabase db = QSqlDatabase::database();
     QSqlQuery query(db);
-    query.exec(m->scripts[Select]);
+    bool success = query.exec(m->scripts[Select]);
+    logQueryExecution(LogContext, query, success);
 
     QSqlRecord record = query.record();
     int idFieldIndex = record.indexOf("id");
@@ -99,7 +103,9 @@ bool CurrentUserDataAdapter::insert(const User &user)
     query.bindValue(":name", user.name());
     query.bindValue(":isoff", user.isOff());
 
-    return query.exec();
+    bool success = query.exec();
+    logQueryExecution(LogContext, query, success);
+    return success;
 }
 
 bool CurrentUserDataAdapter::update(const User &user)
@@ -114,7 +120,9 @@ bool CurrentUserDataAdapter::update(const User &user)
     query.bindValue(":isoff", user.isOff());
     query.bindValue(":id", user.id());
 
-    return query.exec();
+    bool success = query.exec();
+    logQueryExecution(LogContext, query, success);
+    return success;
 }
 
 bool CurrentUserDataAdapter::deleteById(int id)
@@ -125,7 +133,9 @@ bool CurrentUserDataAdapter::deleteById(int id)
 
     query.bindValue(":id", id);
 
-    return query.exec();
+    bool success = query.exec();
+    logQueryExecution(LogContext, query, success);
+    return success;
 }
 
 } // namespace MapService
