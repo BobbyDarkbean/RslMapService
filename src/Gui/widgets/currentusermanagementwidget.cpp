@@ -132,9 +132,11 @@ void CurrentUserManagementWidgetRepresentation::init(CurrentUserManagementWidget
 
     // Connections
     typedef CurrentUserManagementWidget W;
+    typedef CurrentUserModel M;
 
     QItemSelectionModel *selectionModel = usersView->selectionModel();
     QObject::connect(selectionModel,        &QItemSelectionModel::selectionChanged, w,  &W::updateRemoveButtonState);
+    QObject::connect(userModel,             &M::modelAboutToBeReset,   selectionModel,  &QItemSelectionModel::clear);
 
     EditedSignalTrigger *userEditedSignal = userDelegate->userEdited();
     QObject::connect(userEditedSignal,      &EditedSignalTrigger::activated,        w,  &W::userEditPerformed);
@@ -320,7 +322,6 @@ void CurrentUserManagementWidget::submitSelectedUserRemoval()
 
 void CurrentUserManagementWidget::reloadModelData()
 {
-    m->usersView->selectionModel()->clear();
     m->userModel->reload();
 }
 

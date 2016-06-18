@@ -119,9 +119,11 @@ void EmployeeManagementWidgetRepresentation::init(EmployeeManagementWidget *w)
 
     // Connections
     typedef EmployeeManagementWidget W;
+    typedef EmployeeModel M;
 
     QItemSelectionModel *selectionModel = employeesView->selectionModel();
     QObject::connect(selectionModel,        &QItemSelectionModel::selectionChanged, w,  &W::updateRemoveButtonState);
+    QObject::connect(employeeModel,         &M::modelAboutToBeReset,   selectionModel,  &QItemSelectionModel::clear);
 
     EditedSignalTrigger *employeeEditedSignal = employeeDelegate->employeeEdited();
     QObject::connect(employeeEditedSignal,  &EditedSignalTrigger::activated,        w,  &W::employeeEditPerformed);
@@ -297,7 +299,6 @@ void EmployeeManagementWidget::submitSelectedEmployeeRemoval()
 
 void EmployeeManagementWidget::reloadModelData()
 {
-    m->employeesView->selectionModel()->clear();
     m->employeeModel->reload();
 }
 
