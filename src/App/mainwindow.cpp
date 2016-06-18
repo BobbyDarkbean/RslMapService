@@ -55,6 +55,7 @@ MainWindow::MainWindow(QWidget *parent)
     , m(new Impl::MainWindowRepresentation)
 {
     m->init(this);
+    m->retranslateUi();
 }
 
 MainWindow::~MainWindow()
