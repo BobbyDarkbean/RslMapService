@@ -17,6 +17,7 @@ CREATE TABLE currentrequests (
     userid INTEGER,
     doctitle VARCHAR,
     doctype INTEGER,
+    itemcount INTEGER,
     status INTEGER,
     FOREIGN KEY(userid) REFERENCES currentusers(id)
 );
