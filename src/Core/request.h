@@ -22,6 +22,9 @@ public:
     Request &operator=(const Request &);
     ~Request();
 
+    int id() const;
+    void setId(int);
+
     int userId() const;
     void setUserId(int);
 

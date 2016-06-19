@@ -15,6 +15,7 @@ class RequestSharedRepresentation : public QSharedData
 public:
     RequestSharedRepresentation();
 
+    int id;
     int userId;
     CallNumber callNumber;
     QString docTitle;
@@ -27,7 +28,8 @@ private:
 };
 
 RequestSharedRepresentation::RequestSharedRepresentation()
-    : userId(-1)
+    : id(0)
+    , userId(0)
     , callNumber()
     , docTitle()
     , docType(DocumentType_Map)
@@ -57,6 +59,12 @@ Request &Request::operator=(const Request &other)
 Request::~Request()
 {
 }
+
+int Request::id() const
+{ return m->id; }
+
+void Request::setId(int value)
+{ m->id = value; }
 
 int Request::userId() const
 { return m->userId; }
