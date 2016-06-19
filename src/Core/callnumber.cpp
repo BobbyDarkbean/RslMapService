@@ -77,5 +77,39 @@ QString CallNumber::position() const
 void CallNumber::setPosition(const QString &value)
 { m->position = value; }
 
+bool operator==(const CallNumber &a, const CallNumber &b)
+{
+    return a.collection() == b.collection()
+            && a.rack().localeAwareCompare(b.rack()) == 0
+            && a.shelf() == b.shelf()
+            && a.position().localeAwareCompare(b.position()) == 0;
+}
+
+bool operator!=(const CallNumber &a, const CallNumber &b)
+{ return !(a == b); }
+
+bool operator<(const CallNumber &a, const CallNumber &b)
+{
+    if (a.collection() == b.collection()) {
+        int rackCompare = a.rack().localeAwareCompare(b.rack());
+        if (rackCompare == 0) {
+            if (a.shelf() == b.shelf())
+                return a.position().localeAwareCompare(b.position()) < 0;
+            return a.shelf() < b.shelf();
+        }
+        return rackCompare < 0;
+    }
+    return a.collection() < b.collection();
+}
+
+bool operator>(const CallNumber &a, const CallNumber &b)
+{ return b < a; }
+
+bool operator<=(const CallNumber &a, const CallNumber &b)
+{ return !(b < a); }
+
+bool operator>=(const CallNumber &a, const CallNumber &b)
+{ return !(a < b); }
+
 } // namespace MapService
 } // namespace Rsl

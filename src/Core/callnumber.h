@@ -36,6 +36,13 @@ private:
     QSharedDataPointer<Impl::CallNumberSharedRepresentation> m;
 };
 
+bool operator==(const CallNumber &a, const CallNumber &b);
+bool operator!=(const CallNumber &a, const CallNumber &b);
+bool operator<(const CallNumber &a, const CallNumber &b);
+bool operator>(const CallNumber &a, const CallNumber &b);
+bool operator<=(const CallNumber &a, const CallNumber &b);
+bool operator>=(const CallNumber &a, const CallNumber &b);
+
 } // namespace MapService
 } // namespace Rsl
 
