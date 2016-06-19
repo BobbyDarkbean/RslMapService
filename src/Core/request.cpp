@@ -1,5 +1,6 @@
 #include <QSharedData>
 #include <QString>
+#include "callnumber.h"
 #include "rms_global.h"
 
 #include "request.h"
@@ -15,6 +16,7 @@ public:
     RequestSharedRepresentation();
 
     int userId;
+    CallNumber callNumber;
     QString docTitle;
     int docType;
     int itemCount;
@@ -26,6 +28,7 @@ private:
 
 RequestSharedRepresentation::RequestSharedRepresentation()
     : userId(-1)
+    , callNumber()
     , docTitle()
     , docType(DocumentType_Map)
     , itemCount(0)
@@ -60,6 +63,12 @@ int Request::userId() const
 
 void Request::setUserId(int value)
 { m->userId = value; }
+
+CallNumber Request::callNumber() const
+{ return m->callNumber; }
+
+void Request::setCallNumber(const CallNumber &value)
+{ m->callNumber = value; }
 
 QString Request::docTitle() const
 { return m->docTitle; }

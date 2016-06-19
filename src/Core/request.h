@@ -8,6 +8,8 @@
 namespace Rsl {
 namespace MapService {
 
+class CallNumber;
+
 namespace Impl {
 class RequestSharedRepresentation;
 }
@@ -22,6 +24,9 @@ public:
 
     int userId() const;
     void setUserId(int);
+
+    CallNumber callNumber() const;
+    void setCallNumber(const CallNumber &);
 
     QString docTitle() const;
     void setDocTitle(const QString &);

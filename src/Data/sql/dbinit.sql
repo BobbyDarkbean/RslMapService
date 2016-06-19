@@ -15,6 +15,10 @@ CREATE TABLE currentusers (
 CREATE TABLE currentrequests (
     id INTEGER PRIMARY KEY,
     userid INTEGER,
+    collection INTEGER,
+    rack VARCHAR,
+    shelf INTEGER,
+    position VARCHAR,
     doctitle VARCHAR,
     doctype INTEGER,
     itemcount INTEGER,
