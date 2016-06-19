@@ -1,11 +1,16 @@
 #include <QSqlQuery>
 #include <QStringList>
 #include "queryloader.h"
+#include "rmsdata_module.h"
 
 #include "datastorageconfigurator.h"
 
 namespace Rsl {
 namespace MapService {
+
+namespace {
+const QString LogContext("DataStorageConfigurator");
+}
 
 DataStorageConfigurator::DataStorageConfigurator()
 {
@@ -32,17 +37,28 @@ QStringList DataStorageConfigurator::sequence(const QString &pathToSql)
 
 bool DataStorageConfigurator::execSequence(const QStringList &queries)
 {
-    if (queries.isEmpty())
+    if (queries.isEmpty()) {
+        logQuerySequenceIsEmpty(LogContext);
         return false;
-
-    QSqlDatabase db = QSqlDatabase::database();
-    QSqlQuery query(db);
-    foreach (const QString &queryStr, queries) {
-        if (!query.exec(queryStr))
-            return false;
     }
 
-    return true;
+    int queriesExecuted = 0;
+    QSqlDatabase db = QSqlDatabase::database();
+    QSqlQuery query(db);
+
+    foreach (const QString &queryStr, queries) {
+        bool success = query.exec(queryStr);
+        logQueryExecution(LogContext, query, success);
+
+        if (success) {
+            ++queriesExecuted;
+        } else {
+            break;
+        }
+    }
+
+    logQuerySequenceExecution(LogContext, queriesExecuted, queries.size());
+    return (queriesExecuted == queries.size());
 }
 
 } // namespace MapService

@@ -103,9 +103,7 @@ bool CurrentUserDataAdapter::insert(const User &user)
     query.bindValue(":name", user.name());
     query.bindValue(":isoff", user.isOff());
 
-    bool success = query.exec();
-    logQueryExecution(LogContext, query, success);
-    return success;
+    return queryLoggedExec(LogContext, query);
 }
 
 bool CurrentUserDataAdapter::update(const User &user)
@@ -120,9 +118,7 @@ bool CurrentUserDataAdapter::update(const User &user)
     query.bindValue(":isoff", user.isOff());
     query.bindValue(":id", user.id());
 
-    bool success = query.exec();
-    logQueryExecution(LogContext, query, success);
-    return success;
+    return queryLoggedExec(LogContext, query);
 }
 
 bool CurrentUserDataAdapter::deleteById(int id)
@@ -133,9 +129,7 @@ bool CurrentUserDataAdapter::deleteById(int id)
 
     query.bindValue(":id", id);
 
-    bool success = query.exec();
-    logQueryExecution(LogContext, query, success);
-    return success;
+    return queryLoggedExec(LogContext, query);
 }
 
 } // namespace MapService

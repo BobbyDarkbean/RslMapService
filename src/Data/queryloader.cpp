@@ -1,6 +1,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QStringList>
+#include "rmsdata_module.h"
 
 #include "queryloader.h"
 
@@ -10,6 +11,8 @@ namespace MapService {
 namespace {
 const QChar SQL_SENTENCE_DELIM(';');
 const QString SQL_COMMENT_SEQUENCE("--");
+
+const QString LogContext("QueryLoader");
 }
 
 namespace Impl {
@@ -43,13 +46,18 @@ bool QueryLoader::isOpen() const
 
 bool QueryLoader::open(const QString &filename)
 {
-    if (m->queryFile.isOpen())
+    if (m->queryFile.isOpen()) {
+        logFileIO(LogContext, FileIOStatus_AlreadyOpen, &m->queryFile);
         return false;
+    }
 
     m->queryFile.setFileName(filename);
-    if (!m->queryFile.open(QIODevice::ReadOnly | QIODevice::Text))
+    if (!m->queryFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        logFileIO(LogContext, FileIOStatus_OpenError, &m->queryFile);
         return false;
+    }
 
+    logFileIO(LogContext, FileIOStatus_OpenForReading, &m->queryFile);
     return true;
 }
 
@@ -73,10 +81,13 @@ QStringList QueryLoader::load()
             queryString += QChar::Space;
         }
 
-        if (!queryString.isEmpty())
+        if (!queryString.isEmpty()) {
             queries << queryString;
+            logQueryReading(LogContext, queryString);
+        }
     }
 
+    logQueryReading(LogContext, queries.size());
     return queries;
 }
 
