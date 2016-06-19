@@ -6,6 +6,7 @@ DESTDIR = ../bin
 TARGET = RmsCore
 
 HEADERS += \
+    callnumber.h \
     employee.h \
     log.h \
     request.h \
@@ -15,6 +16,7 @@ HEADERS += \
     user.h
 
 SOURCES += \
+    callnumber.cpp \
     employee.cpp \
     log.cpp \
     request.cpp \

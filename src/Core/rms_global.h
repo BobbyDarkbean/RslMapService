@@ -25,6 +25,20 @@ enum {
     CardNumberMaximum = 9999999
 };
 
+enum Collection {
+    Collection_Native,
+    Collection_Foreign,
+    Collection_Classified,
+    Collection_AuxiliaryNative,
+    Collection_AuxiliaryForeign,
+    Collection_OpenAccessNative,
+    Collection_OpenAccessForeign
+};
+
+enum {
+    ShelfNumberMinimum = 1
+};
+
 enum DocumentType
 {
     DocumentType_Map,
