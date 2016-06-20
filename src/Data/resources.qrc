@@ -1,5 +1,9 @@
 <RCC>
     <qresource prefix="/data">
+        <file alias="currentrequest-delete.sql">sql/currentrequest-delete.sql</file>
+        <file alias="currentrequest-insert.sql">sql/currentrequest-insert.sql</file>
+        <file alias="currentrequest-select.sql">sql/currentrequest-select.sql</file>
+        <file alias="currentrequest-update.sql">sql/currentrequest-update.sql</file>
         <file alias="currentuser-delete.sql">sql/currentuser-delete.sql</file>
         <file alias="currentuser-insert.sql">sql/currentuser-insert.sql</file>
         <file alias="currentuser-select.sql">sql/currentuser-select.sql</file>
