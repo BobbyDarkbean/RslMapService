@@ -1,7 +1,9 @@
 #include <QStackedWidget>
+#include <QDockWidget>
 #include <QStatusBar>
 #include <QEvent>
 #include <QMap>
+#include "widgets/currentusermanagementwidget.h"
 #include "widgets/employeemanagementwidget.h"
 
 #include "mainwindow.h"
@@ -22,11 +24,14 @@ struct MainWindowRepresentation
 
     QStackedWidget *centralWidget;
 
+    QDockWidget *currentUsersDock;
+
     QMap<int, int> centralWidgetMapping;
 };
 
 void MainWindowRepresentation::init(MainWindow *w)
 {
+    // Modes
     centralWidget = new QStackedWidget;
 
     EmployeeManagementWidget *employeeManagementWidget = new EmployeeManagementWidget;
@@ -34,12 +39,29 @@ void MainWindowRepresentation::init(MainWindow *w)
 
     centralWidgetMapping[CentralWidgetMode_EmployeeManagement] = employeeManagementWidgetIndex;
 
+    // Widgets
+    CurrentUserManagementWidget *userManagementWidget = new CurrentUserManagementWidget(w);
+
+    // Docks
+    currentUsersDock = new QDockWidget(w);
+    currentUsersDock->setWidget(userManagementWidget);
+    currentUsersDock->setFeatures(QDockWidget::DockWidgetMovable);
+    currentUsersDock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+    w->addDockWidget(Qt::LeftDockWidgetArea, currentUsersDock);
+
+    // Connections
     typedef MainWindow W;
     typedef EmployeeManagementWidget EMW;
 
     QObject::connect(employeeManagementWidget,  &EMW::employeeEditPerformed,        w,  &W::reportEmployeeEdited);
     QObject::connect(employeeManagementWidget,  &EMW::employeeAppendingPerformed,   w,  &W::reportEmployeeAppending);
     QObject::connect(employeeManagementWidget,  &EMW::employeeRemovalPerformed,     w,  &W::reportEmployeeRemoval);
+
+    typedef CurrentUserManagementWidget UMW;
+
+    QObject::connect(userManagementWidget,      &UMW::userEditPerformed,            w,  &W::reportUserEdited);
+    QObject::connect(userManagementWidget,      &UMW::userAppendingPerformed,       w,  &W::reportUserAppending);
+    QObject::connect(userManagementWidget,      &UMW::userRemovalPerformed,         w,  &W::reportUserRemoval);
 
     w->setCentralWidget(centralWidget);
 }
