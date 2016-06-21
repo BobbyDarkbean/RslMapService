@@ -20,7 +20,7 @@ namespace Impl {
 struct MainWindowRepresentation
 {
     void init(MainWindow *);
-    void retranslateUi();
+    void retranslateUi(MainWindow *);
 
     QStackedWidget *centralWidget;
 
@@ -66,8 +66,9 @@ void MainWindowRepresentation::init(MainWindow *w)
     w->setCentralWidget(centralWidget);
 }
 
-void MainWindowRepresentation::retranslateUi()
+void MainWindowRepresentation::retranslateUi(MainWindow *w)
 {
+    w->statusBar()->showMessage(MainWindow::tr("DONE"));
 }
 
 } // namespace Impl
@@ -77,7 +78,7 @@ MainWindow::MainWindow(QWidget *parent)
     , m(new Impl::MainWindowRepresentation)
 {
     m->init(this);
-    m->retranslateUi();
+    m->retranslateUi(this);
 }
 
 MainWindow::~MainWindow()
@@ -87,7 +88,7 @@ MainWindow::~MainWindow()
 void MainWindow::changeEvent(QEvent *e)
 {
     if (e->type() == QEvent::LanguageChange)
-        m->retranslateUi();
+        m->retranslateUi(this);
     else
         QMainWindow::changeEvent(e);
 }

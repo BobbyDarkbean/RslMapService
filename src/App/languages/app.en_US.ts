@@ -11,6 +11,10 @@
 <context>
     <name>Rsl::MapService::MainWindow</name>
     <message>
+        <source>DONE</source>
+        <translation>Done</translation>
+    </message>
+    <message>
         <source>USER_EDIT_ACCEPTED</source>
         <translation>User edited.</translation>
     </message>

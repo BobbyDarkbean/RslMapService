@@ -11,6 +11,10 @@
 <context>
     <name>Rsl::MapService::MainWindow</name>
     <message>
+        <source>DONE</source>
+        <translation>Готово</translation>
+    </message>
+    <message>
         <source>USER_EDIT_ACCEPTED</source>
         <translation>Данные читателя успешно изменены.</translation>
     </message>
