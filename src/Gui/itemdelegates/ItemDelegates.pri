@@ -3,11 +3,13 @@ HEADERS += \
     itemdelegates/currentusereditor.h \
     itemdelegates/editedsignaltrigger.h \
     itemdelegates/employeedelegate.h \
-    itemdelegates/employeeeditor.h
+    itemdelegates/employeeeditor.h \
+    itemdelegates/itemdelegatestyler.h
 
 SOURCES += \
     itemdelegates/currentuserdelegate.cpp \
     itemdelegates/currentusereditor.cpp \
     itemdelegates/editedsignaltrigger.cpp \
     itemdelegates/employeedelegate.cpp \
-    itemdelegates/employeeeditor.cpp
+    itemdelegates/employeeeditor.cpp \
+    itemdelegates/itemdelegatestyler.cpp
