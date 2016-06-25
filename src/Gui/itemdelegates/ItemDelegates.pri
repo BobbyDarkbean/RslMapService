@@ -4,7 +4,8 @@ HEADERS += \
     itemdelegates/editedsignaltrigger.h \
     itemdelegates/employeedelegate.h \
     itemdelegates/employeeeditor.h \
-    itemdelegates/itemdelegatestyler.h
+    itemdelegates/itemdelegatestyler.h \
+    itemdelegates/itemeditor.h
 
 SOURCES += \
     itemdelegates/currentuserdelegate.cpp \
@@ -12,4 +13,5 @@ SOURCES += \
     itemdelegates/editedsignaltrigger.cpp \
     itemdelegates/employeedelegate.cpp \
     itemdelegates/employeeeditor.cpp \
-    itemdelegates/itemdelegatestyler.cpp
+    itemdelegates/itemdelegatestyler.cpp \
+    itemdelegates/itemeditor.cpp

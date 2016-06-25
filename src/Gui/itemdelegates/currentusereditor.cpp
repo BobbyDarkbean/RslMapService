@@ -18,21 +18,17 @@ struct CurrentUserEditorRepresentation
 {
     void init(CurrentUserEditor *);
     void retranslateUi();
-    void applyMode();
+    void applyMode(bool presentationMode);
 
     QSpinBox *hallNumberBox;
     QSpinBox *cardNumberBox;
     QLineEdit *nameBox;
     QLabel *idLabel;
     QCheckBox *isOffBox;
-
-    bool presentationMode;
 };
 
 void CurrentUserEditorRepresentation::init(CurrentUserEditor *w)
 {
-    presentationMode = false;
-
     hallNumberBox = new QSpinBox;
     cardNumberBox = new QSpinBox;
     nameBox = new QLineEdit;
@@ -71,7 +67,7 @@ void CurrentUserEditorRepresentation::retranslateUi()
     isOffBox->setText(CurrentUserEditor::tr("IS_OFF"));
 }
 
-void CurrentUserEditorRepresentation::applyMode()
+void CurrentUserEditorRepresentation::applyMode(bool presentationMode)
 {
     nameBox->setFrame(!presentationMode);
     nameBox->setReadOnly(presentationMode);
@@ -80,9 +76,10 @@ void CurrentUserEditorRepresentation::applyMode()
 } // namespace Impl
 
 CurrentUserEditor::CurrentUserEditor(QWidget *parent)
-    : QWidget(parent)
-    , m(new Impl::CurrentUserEditorRepresentation)
+    : ItemEditor(parent)
+    , m_CurrentUserEditor(new Impl::CurrentUserEditorRepresentation)
 {
+    UNIQUE_REP(CurrentUserEditor);
     m->init(this);
     m->retranslateUi();
 }
@@ -91,46 +88,69 @@ CurrentUserEditor::~CurrentUserEditor()
 {
 }
 
-bool CurrentUserEditor::isPresentationMode() const
-{ return m->presentationMode; }
-
-void CurrentUserEditor::setPresentationMode(bool presentationMode)
+int CurrentUserEditor::hallNumber() const
 {
-    m->presentationMode = presentationMode;
-    m->applyMode();
+    CONST_UNIQUE_REP(CurrentUserEditor);
+    return m->hallNumberBox->value();
 }
 
-int CurrentUserEditor::hallNumber() const
-{ return m->hallNumberBox->value(); }
-
 void CurrentUserEditor::setHallNumber(int number)
-{ m->hallNumberBox->setValue(number); }
+{
+    UNIQUE_REP(CurrentUserEditor);
+    m->hallNumberBox->setValue(number);
+}
 
 int CurrentUserEditor::cardNumber() const
-{ return m->cardNumberBox->value(); }
+{
+    CONST_UNIQUE_REP(CurrentUserEditor);
+    return m->cardNumberBox->value();
+}
 
 void CurrentUserEditor::setCardNumber(int number)
-{ m->cardNumberBox->setValue(number); }
+{
+    UNIQUE_REP(CurrentUserEditor);
+    m->cardNumberBox->setValue(number);
+}
 
 QString CurrentUserEditor::name() const
-{ return m->nameBox->text(); }
+{
+    CONST_UNIQUE_REP(CurrentUserEditor);
+    return m->nameBox->text();
+}
 
 void CurrentUserEditor::setName(const QString &name)
-{ m->nameBox->setText(name); }
+{
+    UNIQUE_REP(CurrentUserEditor);
+    m->nameBox->setText(name);
+}
 
 bool CurrentUserEditor::isOff() const
-{ return m->isOffBox->isChecked(); }
+{
+    CONST_UNIQUE_REP(CurrentUserEditor);
+    return m->isOffBox->isChecked();
+}
 
 void CurrentUserEditor::setOff(bool off)
-{ m->isOffBox->setChecked(off); }
+{
+    UNIQUE_REP(CurrentUserEditor);
+    m->isOffBox->setChecked(off);
+}
 
 void CurrentUserEditor::setId(int id)
 {
+    UNIQUE_REP(CurrentUserEditor);
     m->idLabel->setText(QString("(%1)").arg(id));
+}
+
+void CurrentUserEditor::applyMode()
+{
+    UNIQUE_REP(CurrentUserEditor);
+    m->applyMode(isPresentationMode());
 }
 
 void CurrentUserEditor::changeEvent(QEvent *e)
 {
+    UNIQUE_REP(CurrentUserEditor);
     if (e->type() == QEvent::LanguageChange)
         m->retranslateUi();
     else

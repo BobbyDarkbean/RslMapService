@@ -1,8 +1,8 @@
 #ifndef CURRENTUSEREDITOR_H
 #define CURRENTUSEREDITOR_H
 
-#include <QWidget>
 #include <QScopedPointer>
+#include "itemeditor.h"
 
 namespace Rsl {
 namespace MapService {
@@ -11,16 +11,13 @@ namespace Impl {
 struct CurrentUserEditorRepresentation;
 }
 
-class CurrentUserEditor : public QWidget
+class CurrentUserEditor : public ItemEditor
 {
     Q_OBJECT
 
 public:
     explicit CurrentUserEditor(QWidget *parent = 0);
     ~CurrentUserEditor();
-
-    bool isPresentationMode() const;
-    void setPresentationMode(bool);
 
     int hallNumber() const;
     void setHallNumber(int);
@@ -37,11 +34,12 @@ public:
     void setId(int);
 
 protected:
+    void applyMode();
     void changeEvent(QEvent *);
 
 private:
     Q_DISABLE_COPY(CurrentUserEditor)
-    QScopedPointer<Impl::CurrentUserEditorRepresentation> m;
+    QScopedPointer<Impl::CurrentUserEditorRepresentation> m_CurrentUserEditor;
 };
 
 } // namespace MapService

@@ -6,6 +6,12 @@
 namespace Rsl {
 namespace MapService {
 
+#define UNIQUE_REP(Class) \
+    Impl::Class##Representation *const m = m_##Class.data()
+
+#define CONST_UNIQUE_REP(Class) \
+    const Impl::Class##Representation *const m = m_##Class.data()
+
 extern RMS_CORE_SHARED const QString WrittenNameRegExp;
 
 enum ReadingHall

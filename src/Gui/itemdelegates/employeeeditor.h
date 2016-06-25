@@ -1,8 +1,8 @@
 #ifndef EMPLOYEEEDITOR_H
 #define EMPLOYEEEDITOR_H
 
-#include <QWidget>
 #include <QScopedPointer>
+#include "itemeditor.h"
 
 namespace Rsl {
 namespace MapService {
@@ -11,16 +11,13 @@ namespace Impl {
 struct EmployeeEditorRepresentation;
 }
 
-class EmployeeEditor : public QWidget
+class EmployeeEditor : public ItemEditor
 {
     Q_OBJECT
 
 public:
     explicit EmployeeEditor(QWidget *parent = 0);
     ~EmployeeEditor();
-
-    bool isPresentationMode() const;
-    void setPresentationMode(bool);
 
     bool isActive() const;
     void setActive(bool);
@@ -30,9 +27,12 @@ public:
 
     void setId(int);
 
+protected:
+    void applyMode();
+
 private:
     Q_DISABLE_COPY(EmployeeEditor)
-    QScopedPointer<Impl::EmployeeEditorRepresentation> m;
+    QScopedPointer<Impl::EmployeeEditorRepresentation> m_EmployeeEditor;
 };
 
 } // namespace MapService
