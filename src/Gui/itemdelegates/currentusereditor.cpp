@@ -1,8 +1,8 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QCheckBox>
-#include <QRegExpValidator>
 #include <QSpinBox>
+#include <QRegExpValidator>
 #include <QBoxLayout>
 #include <QEvent>
 #include "rms_global.h"
