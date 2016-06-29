@@ -19,6 +19,7 @@ enum {
 };
 
 void logFileIO(const QString &context, int fileIOStatus, const QFile *file);
+void logXmlDataReading(const QString &context, int entriesRead);
 void logQueryReading(const QString &context, const QString &queryString);
 void logQueryReading(const QString &context, int queriesRead);
 void logQueryExecution(const QString &context, const QSqlQuery &query, bool success);

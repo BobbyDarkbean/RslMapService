@@ -29,6 +29,12 @@ void logFileIO(const QString &context, int fileIOStatus, const QFile *file)
                QString("`%1` %2").arg(file->fileName(), ErrorString));
 }
 
+void logXmlDataReading(const QString &context, int entriesRead)
+{
+    const QString Statement("entries read:");
+    Log::write(RmsDataTag, context, Statement, QString::number(entriesRead));
+}
+
 void logQueryReading(const QString &context, const QString &queryString)
 {
     const QString Statement("query read");

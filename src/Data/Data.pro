@@ -16,12 +16,14 @@ HEADERS += \
     datastorageconfigurator.h \
     queryloader.h \
     rmsdata_module.h \
-    rmsdata_shared.h
+    rmsdata_shared.h \
+    xmldataloader.h
 
 SOURCES += \
     datastorageconfigurator.cpp \
     queryloader.cpp \
-    rmsdata_module.cpp
+    rmsdata_module.cpp \
+    xmldataloader.cpp
 
 RESOURCES += \
     resources.qrc
