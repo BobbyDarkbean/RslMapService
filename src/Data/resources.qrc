@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/data">
+        <file alias="collections.xml">persistent/collections.xml</file>
         <file alias="currentrequest-delete.sql">sql/currentrequest-delete.sql</file>
         <file alias="currentrequest-insert.sql">sql/currentrequest-insert.sql</file>
         <file alias="currentrequest-select.sql">sql/currentrequest-select.sql</file>
