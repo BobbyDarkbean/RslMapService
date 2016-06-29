@@ -1,4 +1,5 @@
 HEADERS += \
+    itemmodels/collectiontagmodel.h \
     itemmodels/currentrequestmodel.h \
     itemmodels/currentusermodel.h \
     itemmodels/currentusersortfilterproxymodel.h \
@@ -6,6 +7,7 @@ HEADERS += \
     itemmodels/employeesortfilterproxymodel.h
 
 SOURCES += \
+    itemmodels/collectiontagmodel.cpp \
     itemmodels/currentrequestmodel.cpp \
     itemmodels/currentusermodel.cpp \
     itemmodels/currentusersortfilterproxymodel.cpp \
