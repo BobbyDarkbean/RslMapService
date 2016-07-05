@@ -1,4 +1,6 @@
 HEADERS += \
+    itemdelegates/currentrequestdelegate.h \
+    itemdelegates/currentrequesteditor.h \
     itemdelegates/currentuserdelegate.h \
     itemdelegates/currentusereditor.h \
     itemdelegates/editedsignaltrigger.h \
@@ -8,6 +10,8 @@ HEADERS += \
     itemdelegates/itemeditor.h
 
 SOURCES += \
+    itemdelegates/currentrequestdelegate.cpp \
+    itemdelegates/currentrequesteditor.cpp \
     itemdelegates/currentuserdelegate.cpp \
     itemdelegates/currentusereditor.cpp \
     itemdelegates/editedsignaltrigger.cpp \
