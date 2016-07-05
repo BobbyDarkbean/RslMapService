@@ -13,6 +13,8 @@ namespace MapService {
     const Impl::Class##Representation *const m = m_##Class.data()
 
 extern RMS_CORE_SHARED const QString WrittenNameRegExp;
+extern RMS_CORE_SHARED const QString CallNumberRackRegExp;
+extern RMS_CORE_SHARED const QString CallNumberPositionRegExp;
 
 enum ReadingHall
 {
@@ -42,7 +44,8 @@ enum Collection {
 };
 
 enum {
-    ShelfNumberMinimum = 1
+    ShelfNumberMinimum = 1,
+    ShelfNumberMaximum = 20
 };
 
 enum DocumentType
@@ -57,6 +60,11 @@ enum DocumentType
 
     DocumentType_MIN = DocumentType_Map,
     DocumentType_MAX = DocumentType_OpticalDisc
+};
+
+enum {
+    ItemCountMinimum = 0,
+    ItemCountMaximum = 1000
 };
 
 enum RequestStatus

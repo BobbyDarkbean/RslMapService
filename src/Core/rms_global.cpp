@@ -33,6 +33,8 @@ const char *request_status_strings[] = {
 }
 
 const QString WrittenNameRegExp(R"([\w\.\,\-\(\)\s]*)");
+const QString CallNumberRackRegExp(R"((\w\-?)*)");
+const QString CallNumberPositionRegExp(R"(\d+\w?)");
 
 QString toString(DocumentType dt)
 {
