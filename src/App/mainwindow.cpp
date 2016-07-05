@@ -4,6 +4,7 @@
 #include <QEvent>
 #include <QMap>
 #include "widgets/currentusermanagementwidget.h"
+#include "widgets/currentrequestmanagementwidget.h"
 #include "widgets/employeemanagementwidget.h"
 
 #include "mainwindow.h"
@@ -12,6 +13,7 @@ namespace Rsl {
 namespace MapService {
 
 enum CentralWidgetMode {
+    CentralWidgetMode_CurrentRequests,
     CentralWidgetMode_EmployeeManagement
 };
 
@@ -34,10 +36,17 @@ void MainWindowRepresentation::init(MainWindow *w)
     // Modes
     centralWidget = new QStackedWidget;
 
+    CurrentRequestManagementWidget *requestManagementWidget = new CurrentRequestManagementWidget;
+    int requestManagementWidgetIndex = centralWidget->addWidget(requestManagementWidget);
+
+    centralWidgetMapping[CentralWidgetMode_CurrentRequests] = requestManagementWidgetIndex;
+
     EmployeeManagementWidget *employeeManagementWidget = new EmployeeManagementWidget;
     int employeeManagementWidgetIndex = centralWidget->addWidget(employeeManagementWidget);
 
     centralWidgetMapping[CentralWidgetMode_EmployeeManagement] = employeeManagementWidgetIndex;
+
+    centralWidget->setCurrentIndex(requestManagementWidgetIndex);
 
     // Widgets
     CurrentUserManagementWidget *userManagementWidget = new CurrentUserManagementWidget(w);
@@ -51,6 +60,12 @@ void MainWindowRepresentation::init(MainWindow *w)
 
     // Connections
     typedef MainWindow W;
+    typedef CurrentRequestManagementWidget RMW;
+
+    QObject::connect(requestManagementWidget,   &RMW::requestEditPerformed,         w,  &W::reportRequestEdited);
+    QObject::connect(requestManagementWidget,   &RMW::requestAppendingPerformed,    w,  &W::reportRequestAppending);
+    QObject::connect(requestManagementWidget,   &RMW::requestRemovalPerformed,      w,  &W::reportRequestRemoval);
+
     typedef EmployeeManagementWidget EMW;
 
     QObject::connect(employeeManagementWidget,  &EMW::employeeEditPerformed,        w,  &W::reportEmployeeEdited);
@@ -101,6 +116,15 @@ void MainWindow::reportUserAppending(bool success)
 
 void MainWindow::reportUserRemoval(int count)
 { statusBar()->showMessage(tr("USERS_REMOVED_%1").arg(count)); }
+
+void MainWindow::reportRequestEdited(bool success)
+{ statusBar()->showMessage(success ? tr("REQUEST_EDIT_ACCEPTED") : tr("REQUEST_EDIT_FAILED")); }
+
+void MainWindow::reportRequestAppending(bool success)
+{ statusBar()->showMessage(success ? tr("REQUEST_APPEND_ACCEPTED") : tr("REQUEST_APPEND_FAILED")); }
+
+void MainWindow::reportRequestRemoval(int count)
+{ statusBar()->showMessage(tr("REQUESTS_REMOVED_%1").arg(count)); }
 
 void MainWindow::reportEmployeeEdited(bool success)
 { statusBar()->showMessage(success ? tr("EMPLOYEE_EDIT_ACCEPTED") : tr("EMPLOYEE_EDIT_FAILED")); }

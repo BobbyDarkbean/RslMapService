@@ -26,6 +26,9 @@ private slots:
     void reportUserEdited(bool success);
     void reportUserAppending(bool success);
     void reportUserRemoval(int count);
+    void reportRequestEdited(bool success);
+    void reportRequestAppending(bool success);
+    void reportRequestRemoval(int count);
     void reportEmployeeEdited(bool success);
     void reportEmployeeAppending(bool success);
     void reportEmployeeRemoval(int count);
