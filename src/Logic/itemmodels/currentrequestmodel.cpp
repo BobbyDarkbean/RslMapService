@@ -37,7 +37,6 @@ QVariant CurrentRequestModel::data(const QModelIndex &index, int role) const
     QVariant result;
 
     switch (role) {
-    case Qt::DisplayRole:
     case Qt::EditRole:
         result = QVariant::fromValue(m->requests.at(row));
         break;
@@ -62,6 +61,7 @@ QVariant CurrentRequestModel::data(const QModelIndex &index, int role) const
     case DataRole_CallNumberPosition:
         result = m->requests.at(row).callNumber().position();
         break;
+    case Qt::DisplayRole:
     case DataRole_DocTitle:
         result = m->requests.at(row).docTitle();
         break;

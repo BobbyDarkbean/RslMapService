@@ -36,13 +36,13 @@ QVariant EmployeeModel::data(const QModelIndex &index, int role) const
     QVariant result;
 
     switch (role) {
-    case Qt::DisplayRole:
     case Qt::EditRole:
         result = QVariant::fromValue(m->employees.at(row));
         break;
     case DataRole_Id:
         result = m->employees.at(row).id();
         break;
+    case Qt::DisplayRole:
     case DataRole_Name:
         result = m->employees.at(row).name();
         break;

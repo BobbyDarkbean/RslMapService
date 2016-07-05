@@ -36,7 +36,6 @@ QVariant CurrentUserModel::data(const QModelIndex &index, int role) const
     QVariant result;
 
     switch (role) {
-    case Qt::DisplayRole:
     case Qt::EditRole:
         result = QVariant::fromValue(m->users.at(row));
         break;
@@ -49,6 +48,7 @@ QVariant CurrentUserModel::data(const QModelIndex &index, int role) const
     case DataRole_CardNumber:
         result = m->users.at(row).cardNumber();
         break;
+    case Qt::DisplayRole:
     case DataRole_Name:
         result = m->users.at(row).name();
         break;
