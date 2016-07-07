@@ -10,6 +10,7 @@
 #include <QEvent>
 #include "rms_global.h"
 #include "employee.h"
+#include "datamodelfacade.h"
 #include "itemmodels/employeemodel.h"
 #include "itemmodels/employeesortfilterproxymodel.h"
 #include "itemdelegates/employeedelegate.h"
@@ -79,7 +80,7 @@ void EmployeeManagementWidgetRepresentation::init(EmployeeManagementWidget *w)
     addEmployeeButton = new QPushButton;
     newEmployeeGroup = new QGroupBox;
 
-    employeeModel = new EmployeeModel(w);
+    employeeModel = dataModelFacade()->employeeModel();
     employeeProxyModel = new EmployeeSortFilterProxyModel(w);
     employeeDelegate = new EmployeeDelegate(w);
 

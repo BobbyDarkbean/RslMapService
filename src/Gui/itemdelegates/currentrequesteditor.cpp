@@ -5,6 +5,7 @@
 #include <QRegExpValidator>
 #include <QBoxLayout>
 #include <QEvent>
+#include "datamodelfacade.h"
 #include "itemmodels/collectiontagmodel.h"
 #include "itemmodels/currentusermodel.h"
 #include "callnumber.h"
@@ -32,9 +33,6 @@ struct CurrentRequestEditorRepresentation
     QComboBox *docTypeBox;
     QSpinBox *itemCountBox;
     QComboBox *statusBox;
-
-    CurrentUserModel *userModel;
-    CollectionTagModel *collectionTagModel;
 };
 
 void CurrentRequestEditorRepresentation::init(CurrentRequestEditor *w)
@@ -63,11 +61,8 @@ void CurrentRequestEditorRepresentation::init(CurrentRequestEditor *w)
     docTitleBox->setTextInteractionFlags(Qt::TextEditorInteraction);
     docTitleBox->setWordWrapMode(QTextOption::WordWrap);
 
-    userModel = new CurrentUserModel(w);
-    collectionTagModel = new CollectionTagModel(w);
-
-    userBox->setModel(userModel);
-    collectionBox->setModel(collectionTagModel);
+    userBox->setModel(dataModelFacade()->currentUserModel());
+    collectionBox->setModel(new CollectionTagModel(w));
 
     // Layout
     QBoxLayout *userLayout = new QVBoxLayout;

@@ -11,6 +11,7 @@
 #include <QEvent>
 #include "rms_global.h"
 #include "user.h"
+#include "datamodelfacade.h"
 #include "itemmodels/currentusermodel.h"
 #include "itemmodels/currentusersortfilterproxymodel.h"
 #include "itemdelegates/currentuserdelegate.h"
@@ -86,7 +87,7 @@ void CurrentUserManagementWidgetRepresentation::init(CurrentUserManagementWidget
     addUserButton = new QPushButton;
     newUserGroup = new QGroupBox;
 
-    userModel = new CurrentUserModel(w);
+    userModel = dataModelFacade()->currentUserModel();
     userProxyModel = new CurrentUserSortFilterProxyModel(w);
     userDelegate = new CurrentUserDelegate(w);
 

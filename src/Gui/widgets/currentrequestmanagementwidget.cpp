@@ -6,6 +6,7 @@
 #include <QMessageBox>
 #include <QEvent>
 #include "request.h"
+#include "datamodelfacade.h"
 #include "itemmodels/currentrequestmodel.h"
 #include "itemdelegates/currentrequestdelegate.h"
 #include "itemdelegates/currentrequesteditor.h"
@@ -52,7 +53,7 @@ void CurrentRequestManagementWidgetRepresentation::init(CurrentRequestManagement
     requestPresenter = new CurrentRequestEditor;
     offScreenPage = new QWidget;
 
-    requestModel = new CurrentRequestModel(w);
+    requestModel = dataModelFacade()->currentRequestModel();
     requestDelegate = new CurrentRequestDelegate(w);
 
     // Initialization
