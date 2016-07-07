@@ -20,6 +20,7 @@ class RMS_LOGIC_SHARED EmployeeModel : public QAbstractListModel
 
 public:
     enum DataRole {
+        DataRole_Employee   = Qt::EditRole,
         DataRole_Id         = Qt::UserRole,
         DataRole_Name,
         DataRole_IsActive
