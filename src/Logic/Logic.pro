@@ -14,6 +14,7 @@ LIBS += -L../bin -lRmsCore -lRmsData
 include(itemmodels/ItemModels.pri)
 
 HEADERS += \
+    datamodelfacade.h \
     defaultsignaltrigger.h \
     rmslogic_module.h \
     rmslogic_shared.h \
@@ -21,6 +22,7 @@ HEADERS += \
     workflow.h
 
 SOURCES += \
+    datamodelfacade.cpp \
     defaultsignaltrigger.cpp \
     rmslogic_module.cpp \
     signaltrigger.cpp \
