@@ -152,7 +152,7 @@ void CurrentUserManagementWidgetRepresentation::init(CurrentUserManagementWidget
 
     QObject::connect(addUserButton,         &QAbstractButton::clicked,              w,  &W::submitNewUser);
     QObject::connect(removeUserButton,      &QAbstractButton::clicked,              w,  &W::submitSelectedUserRemoval);
-    QObject::connect(reloadUsersButton,     &QAbstractButton::clicked,              w,  &W::reloadModelData);
+    QObject::connect(reloadUsersButton,     &QAbstractButton::clicked,      userModel,  &M::reload);
 
     // Layout
     QBoxLayout *sortFilterOptionsLayout = new QHBoxLayout;
@@ -319,11 +319,6 @@ void CurrentUserManagementWidget::submitSelectedUserRemoval()
 
     int removedRecordsCount = m->userModel->removeData(idsToRemove);
     emit userRemovalPerformed(removedRecordsCount);
-}
-
-void CurrentUserManagementWidget::reloadModelData()
-{
-    m->userModel->reload();
 }
 
 void CurrentUserManagementWidget::updateRemoveButtonState(const QItemSelection &selected, const QItemSelection &deselected)

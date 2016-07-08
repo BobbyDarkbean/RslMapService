@@ -37,7 +37,6 @@ private slots:
 
     void submitNewEmployee();
     void submitSelectedEmployeeRemoval();
-    void reloadModelData();
 
     void updateRemoveButtonState(const QItemSelection &selected, const QItemSelection &deselected);
 

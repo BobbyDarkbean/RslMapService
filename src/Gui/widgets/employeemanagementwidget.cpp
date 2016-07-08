@@ -139,7 +139,7 @@ void EmployeeManagementWidgetRepresentation::init(EmployeeManagementWidget *w)
 
     QObject::connect(addEmployeeButton,     &QAbstractButton::clicked,              w,  &W::submitNewEmployee);
     QObject::connect(removeEmployeeButton,  &QAbstractButton::clicked,              w,  &W::submitSelectedEmployeeRemoval);
-    QObject::connect(reloadEmployeesButton, &QAbstractButton::clicked,              w,  &W::reloadModelData);
+    QObject::connect(reloadEmployeesButton, &QAbstractButton::clicked,  employeeModel,  &M::reload);
 
     // Layout
     QBoxLayout *sortFilterOptionsLayout = new QHBoxLayout;
@@ -296,11 +296,6 @@ void EmployeeManagementWidget::submitSelectedEmployeeRemoval()
 
     int removedRecordsCount = m->employeeModel->removeData(idsToRemove);
     emit employeeRemovalPerformed(removedRecordsCount);
-}
-
-void EmployeeManagementWidget::reloadModelData()
-{
-    m->employeeModel->reload();
 }
 
 void EmployeeManagementWidget::updateRemoveButtonState(const QItemSelection &selected, const QItemSelection &deselected)

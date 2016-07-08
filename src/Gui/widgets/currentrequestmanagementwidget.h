@@ -33,7 +33,6 @@ protected:
 private slots:
     void submitNewRequest();
     void submitSelectedRequestRemoval();
-    void reloadModelData();
 
     void updateRemoveButtonState(const QItemSelection &selected, const QItemSelection &deselected);
 

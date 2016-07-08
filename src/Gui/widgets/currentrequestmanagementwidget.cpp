@@ -80,7 +80,7 @@ void CurrentRequestManagementWidgetRepresentation::init(CurrentRequestManagement
 
     QObject::connect(addRequestButton,      &QAbstractButton::clicked,              w,  &W::submitNewRequest);
     QObject::connect(removeRequestButton,   &QAbstractButton::clicked,              w,  &W::submitSelectedRequestRemoval);
-    QObject::connect(reloadRequestsButton,  &QAbstractButton::clicked,              w,  &W::reloadModelData);
+    QObject::connect(reloadRequestsButton,  &QAbstractButton::clicked,   requestModel,  &M::reload);
 
     // Layout
     QBoxLayout *dataControlLayout = new QHBoxLayout;
@@ -157,11 +157,6 @@ void CurrentRequestManagementWidget::submitSelectedRequestRemoval()
 
     int removedRecordsCount = m->requestModel->removeData(idsToRemove);
     emit requestRemovalPerformed(removedRecordsCount);
-}
-
-void CurrentRequestManagementWidget::reloadModelData()
-{
-    m->requestModel->reload();
 }
 
 void CurrentRequestManagementWidget::updateRemoveButtonState(const QItemSelection &selected, const QItemSelection &deselected)
