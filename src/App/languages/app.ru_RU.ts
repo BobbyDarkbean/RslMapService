@@ -54,5 +54,25 @@
         <source>EMPLOYEES_REMOVED_%1</source>
         <translation>Сотрудников удалено: %1</translation>
     </message>
+    <message>
+        <source>REQUEST_EDIT_ACCEPTED</source>
+        <translation>Требование успешно изменено.</translation>
+    </message>
+    <message>
+        <source>REQUEST_EDIT_FAILED</source>
+        <translation>Не удалось изменить требование.</translation>
+    </message>
+    <message>
+        <source>REQUEST_APPEND_ACCEPTED</source>
+        <translation>Требование добавлено.</translation>
+    </message>
+    <message>
+        <source>REQUEST_APPEND_FAILED</source>
+        <translation>Не удалось добавить требование.</translation>
+    </message>
+    <message>
+        <source>REQUESTS_REMOVED_%1</source>
+        <translation>Требований удалено: %1</translation>
+    </message>
 </context>
 </TS>

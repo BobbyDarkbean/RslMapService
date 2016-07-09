@@ -54,5 +54,25 @@
         <source>EMPLOYEES_REMOVED_%1</source>
         <translation>Employees removed: %1</translation>
     </message>
+    <message>
+        <source>REQUEST_EDIT_ACCEPTED</source>
+        <translation>Request edited.</translation>
+    </message>
+    <message>
+        <source>REQUEST_EDIT_FAILED</source>
+        <translation>Request editing failed.</translation>
+    </message>
+    <message>
+        <source>REQUEST_APPEND_ACCEPTED</source>
+        <translation>Request appended.</translation>
+    </message>
+    <message>
+        <source>REQUEST_APPEND_FAILED</source>
+        <translation>Request appending failed.</translation>
+    </message>
+    <message>
+        <source>REQUESTS_REMOVED_%1</source>
+        <translation>Requests removed: %1</translation>
+    </message>
 </context>
 </TS>
