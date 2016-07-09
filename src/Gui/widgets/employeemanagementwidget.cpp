@@ -1,5 +1,4 @@
 #include <QLabel>
-#include <QLineEdit>
 #include <QPushButton>
 #include <QRadioButton>
 #include <QComboBox>
@@ -8,7 +7,6 @@
 #include <QBoxLayout>
 #include <QMessageBox>
 #include <QEvent>
-#include "rms_global.h"
 #include "employee.h"
 #include "datamodelfacade.h"
 #include "itemmodels/employeemodel.h"
@@ -44,12 +42,8 @@ struct EmployeeManagementWidgetRepresentation
     QGroupBox *sortOrderBox;
 
     QPushButton *reloadEmployeesButton;
-    QPushButton *removeEmployeeButton;
-
-    QLabel *newEmployeeLabel;
-    QLineEdit *newEmployeeBox;
     QPushButton *addEmployeeButton;
-    QGroupBox *newEmployeeGroup;
+    QPushButton *removeEmployeeButton;
 
     EmployeeModel *employeeModel;
     EmployeeSortFilterProxyModel *employeeProxyModel;
@@ -73,12 +67,8 @@ void EmployeeManagementWidgetRepresentation::init(EmployeeManagementWidget *w)
     sortOrderBox = new QGroupBox;
 
     reloadEmployeesButton = new QPushButton;
-    removeEmployeeButton = new QPushButton;
-
-    newEmployeeLabel = new QLabel;
-    newEmployeeBox = new QLineEdit;
     addEmployeeButton = new QPushButton;
-    newEmployeeGroup = new QGroupBox;
+    removeEmployeeButton = new QPushButton;
 
     employeeModel = dataModelFacade()->employeeModel();
     employeeProxyModel = new EmployeeSortFilterProxyModel(w);
@@ -98,9 +88,6 @@ void EmployeeManagementWidgetRepresentation::init(EmployeeManagementWidget *w)
 
     filterCriterionLabel->setBuddy(filterCriterionBox);
     sortCriterionLabel->setBuddy(sortCriterionBox);
-    newEmployeeLabel->setBuddy(newEmployeeBox);
-
-    newEmployeeBox->setValidator(new QRegExpValidator(QRegExp(WrittenNameRegExp), newEmployeeBox));
 
     filterCriterionBox->addItem(QString(), EmployeeSortFilterProxyModel::FilterCriterion_AcceptActive);
     filterCriterionBox->addItem(QString(), EmployeeSortFilterProxyModel::FilterCriterion_AcceptInactive);
@@ -152,9 +139,6 @@ void EmployeeManagementWidgetRepresentation::init(EmployeeManagementWidget *w)
     sortFilterOptionsLayout->addStretch();
     sortFilterOptionsFrame->setLayout(sortFilterOptionsLayout);
 
-    QBoxLayout *employeesViewLayout = new QVBoxLayout;
-    employeesViewLayout->addWidget(employeesView);
-
     QBoxLayout *sortOrderLayout = new QVBoxLayout;
     sortOrderLayout->addWidget(ascOrderButton);
     sortOrderLayout->addWidget(descOrderButton);
@@ -162,6 +146,7 @@ void EmployeeManagementWidgetRepresentation::init(EmployeeManagementWidget *w)
 
     QBoxLayout *dataControlLayout = new QVBoxLayout;
     dataControlLayout->addWidget(reloadEmployeesButton);
+    dataControlLayout->addWidget(addEmployeeButton);
     dataControlLayout->addWidget(removeEmployeeButton);
 
     QBoxLayout *dataControlWrapperLayout = new QHBoxLayout;
@@ -174,20 +159,13 @@ void EmployeeManagementWidgetRepresentation::init(EmployeeManagementWidget *w)
     sortOrderDataControlLayout->addLayout(dataControlWrapperLayout);
 
     QBoxLayout *employeesLayout = new QHBoxLayout;
-    employeesLayout->addLayout(employeesViewLayout, 2);
+    employeesLayout->addWidget(employeesView, 2);
     employeesLayout->addLayout(sortOrderDataControlLayout, 1);
     employeesGroup->setLayout(employeesLayout);
-
-    QBoxLayout *newEmployeeLayout = new QHBoxLayout;
-    newEmployeeLayout->addWidget(newEmployeeLabel);
-    newEmployeeLayout->addWidget(newEmployeeBox);
-    newEmployeeLayout->addWidget(addEmployeeButton);
-    newEmployeeGroup->setLayout(newEmployeeLayout);
 
     QBoxLayout *employeeManagementLayout = new QVBoxLayout;
     employeeManagementLayout->addWidget(sortFilterOptionsFrame);
     employeeManagementLayout->addWidget(employeesGroup);
-    employeeManagementLayout->addWidget(newEmployeeGroup);
     w->setLayout(employeeManagementLayout);
 }
 
@@ -215,11 +193,8 @@ void EmployeeManagementWidgetRepresentation::retranslateUi()
 
     employeesGroup->setTitle(EmployeeManagementWidget::tr("EMPLOYEES"));
     reloadEmployeesButton->setText(QObject::tr("UPDATE"));
-    removeEmployeeButton->setText(QObject::tr("REMOVE"));
-
-    newEmployeeGroup->setTitle(EmployeeManagementWidget::tr("NEW_EMPLOYEE"));
-    newEmployeeLabel->setText(QObject::tr("NAME", "labeltext"));
     addEmployeeButton->setText(QObject::tr("ADD"));
+    removeEmployeeButton->setText(QObject::tr("REMOVE"));
 }
 
 } // namespace Impl
@@ -269,18 +244,9 @@ void EmployeeManagementWidget::changeSortOrder()
 
 void EmployeeManagementWidget::submitNewEmployee()
 {
-    QString name = m->newEmployeeBox->text().simplified();
-    if (name.isEmpty())
-        return;
-
     Employee employee;
-    employee.setName(name);
-    employee.setActive(true);
 
     bool dataAppended = m->employeeModel->appendData(employee);
-    if (dataAppended)
-        m->newEmployeeBox->clear();
-
     emit employeeAppendingPerformed(dataAppended);
 }
 

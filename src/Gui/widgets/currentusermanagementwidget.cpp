@@ -1,15 +1,12 @@
 #include <QLabel>
-#include <QLineEdit>
 #include <QPushButton>
 #include <QRadioButton>
-#include <QSpinBox>
 #include <QComboBox>
 #include <QGroupBox>
 #include <QListView>
 #include <QBoxLayout>
 #include <QMessageBox>
 #include <QEvent>
-#include "rms_global.h"
 #include "user.h"
 #include "datamodelfacade.h"
 #include "itemmodels/currentusermodel.h"
@@ -45,15 +42,8 @@ struct CurrentUserManagementWidgetRepresentation
     QGroupBox *sortOrderBox;
 
     QPushButton *reloadUsersButton;
-    QPushButton *removeUserButton;
-
-    QLabel *newUserCardLabel;
-    QSpinBox *newUserHallNumberBox;
-    QSpinBox *newUserCardNumberBox;
-    QLabel *newUserNameLabel;
-    QLineEdit *newUserNameBox;
     QPushButton *addUserButton;
-    QGroupBox *newUserGroup;
+    QPushButton *removeUserButton;
 
     CurrentUserModel *userModel;
     CurrentUserSortFilterProxyModel *userProxyModel;
@@ -77,15 +67,8 @@ void CurrentUserManagementWidgetRepresentation::init(CurrentUserManagementWidget
     sortOrderBox = new QGroupBox;
 
     reloadUsersButton = new QPushButton;
-    removeUserButton = new QPushButton;
-
-    newUserCardLabel = new QLabel;
-    newUserHallNumberBox = new QSpinBox;
-    newUserCardNumberBox = new QSpinBox;
-    newUserNameLabel = new QLabel;
-    newUserNameBox = new QLineEdit;
     addUserButton = new QPushButton;
-    newUserGroup = new QGroupBox;
+    removeUserButton = new QPushButton;
 
     userModel = dataModelFacade()->currentUserModel();
     userProxyModel = new CurrentUserSortFilterProxyModel(w);
@@ -105,13 +88,6 @@ void CurrentUserManagementWidgetRepresentation::init(CurrentUserManagementWidget
 
     filterCriterionLabel->setBuddy(filterCriterionBox);
     sortCriterionLabel->setBuddy(sortCriterionBox);
-    newUserCardLabel->setBuddy(newUserHallNumberBox);
-    newUserNameLabel->setBuddy(newUserNameBox);
-
-    newUserNameBox->setValidator(new QRegExpValidator(QRegExp(WrittenNameRegExp), newUserNameBox));
-
-    newUserHallNumberBox->setRange(ReadingHall_MIN, ReadingHall_MAX);
-    newUserCardNumberBox->setRange(CardNumberMinimum, CardNumberMaximum);
 
     filterCriterionBox->addItem(QString(), CurrentUserSortFilterProxyModel::FilterCriterion_AcceptPresent);
     filterCriterionBox->addItem(QString(), CurrentUserSortFilterProxyModel::FilterCriterion_AcceptAbsent);
@@ -173,6 +149,7 @@ void CurrentUserManagementWidgetRepresentation::init(CurrentUserManagementWidget
     QBoxLayout *dataControlLayout = new QVBoxLayout;
     dataControlLayout->addStretch();
     dataControlLayout->addWidget(reloadUsersButton);
+    dataControlLayout->addWidget(addUserButton);
     dataControlLayout->addWidget(removeUserButton);
 
     QBoxLayout *sortOrderDataControlLayout = new QHBoxLayout;
@@ -185,26 +162,9 @@ void CurrentUserManagementWidgetRepresentation::init(CurrentUserManagementWidget
     usersLayout->addLayout(sortOrderDataControlLayout, 0);
     usersGroup->setLayout(usersLayout);
 
-    QBoxLayout *newUserCardLayout = new QHBoxLayout;
-    newUserCardLayout->addWidget(newUserCardLabel);
-    newUserCardLayout->addWidget(newUserHallNumberBox);
-    newUserCardLayout->addWidget(newUserCardNumberBox);
-    newUserCardLayout->addStretch();
-
-    QBoxLayout *newUserNameLayout = new QHBoxLayout;
-    newUserNameLayout->addWidget(newUserNameLabel);
-    newUserNameLayout->addWidget(newUserNameBox);
-    newUserNameLayout->addWidget(addUserButton);
-
-    QBoxLayout *newUserLayout = new QVBoxLayout;
-    newUserLayout->addLayout(newUserCardLayout);
-    newUserLayout->addLayout(newUserNameLayout);
-    newUserGroup->setLayout(newUserLayout);
-
     QBoxLayout *userManagementLayout = new QVBoxLayout;
     userManagementLayout->addWidget(sortFilterOptionsFrame);
     userManagementLayout->addWidget(usersGroup);
-    userManagementLayout->addWidget(newUserGroup);
     w->setLayout(userManagementLayout);
 }
 
@@ -232,12 +192,8 @@ void CurrentUserManagementWidgetRepresentation::retranslateUi()
 
     usersGroup->setTitle(CurrentUserManagementWidget::tr("USERS"));
     reloadUsersButton->setText(QObject::tr("UPDATE"));
-    removeUserButton->setText(QObject::tr("REMOVE"));
-
-    newUserGroup->setTitle(CurrentUserManagementWidget::tr("NEW_USER"));
-    newUserCardLabel->setText(QObject::tr("CARD_NUMBER", "labeltext"));
-    newUserNameLabel->setText(QObject::tr("NAME", "labeltext"));
     addUserButton->setText(QObject::tr("ADD"));
+    removeUserButton->setText(QObject::tr("REMOVE"));
 }
 
 } // namespace Impl
@@ -287,23 +243,9 @@ void CurrentUserManagementWidget::changeSortOrder()
 
 void CurrentUserManagementWidget::submitNewUser()
 {
-    QString name = m->newUserNameBox->text().simplified();
-    if (name.isEmpty())
-        return;
-
     User user;
-    user.setName(name);
-    user.setHallNumber(m->newUserHallNumberBox->value());
-    user.setCardNumber(m->newUserCardNumberBox->value());
-    user.setOff(false);
 
     bool dataAppended = m->userModel->appendData(user);
-    if (dataAppended) {
-        m->newUserNameBox->clear();
-        m->newUserHallNumberBox->setValue(0);
-        m->newUserCardNumberBox->setValue(0);
-    }
-
     emit userAppendingPerformed(dataAppended);
 }
 

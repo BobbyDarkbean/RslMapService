@@ -28,8 +28,8 @@ struct CurrentRequestManagementWidgetRepresentation
     QStackedWidget *pager;
 
     QListView *requestsView;
-    QPushButton *addRequestButton;
     QPushButton *reloadRequestsButton;
+    QPushButton *addRequestButton;
     QPushButton *removeRequestButton;
     QGroupBox *requestsGroup;
 
@@ -46,8 +46,8 @@ void CurrentRequestManagementWidgetRepresentation::init(CurrentRequestManagement
     pager = new QStackedWidget;
 
     requestsView = new QListView;
-    addRequestButton = new QPushButton;
     reloadRequestsButton = new QPushButton;
+    addRequestButton = new QPushButton;
     removeRequestButton = new QPushButton;
     requestsGroup = new QGroupBox;
 
@@ -90,8 +90,8 @@ void CurrentRequestManagementWidgetRepresentation::init(CurrentRequestManagement
     // Layout
     QBoxLayout *dataControlLayout = new QHBoxLayout;
     dataControlLayout->addStretch();
-    dataControlLayout->addWidget(addRequestButton);
     dataControlLayout->addWidget(reloadRequestsButton);
+    dataControlLayout->addWidget(addRequestButton);
     dataControlLayout->addWidget(removeRequestButton);
 
     QBoxLayout *requestsLayout = new QVBoxLayout;
@@ -115,8 +115,8 @@ void CurrentRequestManagementWidgetRepresentation::init(CurrentRequestManagement
 void CurrentRequestManagementWidgetRepresentation::retranslateUi()
 {
     requestsGroup->setTitle(CurrentRequestManagementWidget::tr("REQUESTS"));
-    addRequestButton->setText(QObject::tr("ADD"));
     reloadRequestsButton->setText(QObject::tr("UPDATE"));
+    addRequestButton->setText(QObject::tr("ADD"));
     removeRequestButton->setText(QObject::tr("REMOVE"));
 }
 
