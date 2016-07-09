@@ -79,6 +79,7 @@ bool CurrentUserModel::setData(const QModelIndex &index, const QVariant &value, 
 
     m->users[row] = user;
     emit dataChanged(index, index, QVector<int>() << role);
+    emit userChanged();
 
     return true;
 }

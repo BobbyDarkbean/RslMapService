@@ -8,6 +8,7 @@
 #include "request.h"
 #include "datamodelfacade.h"
 #include "itemmodels/currentrequestmodel.h"
+#include "itemmodels/currentusermodel.h"
 #include "itemdelegates/currentrequestdelegate.h"
 #include "itemdelegates/currentrequesteditor.h"
 #include "itemdelegates/editedsignaltrigger.h"
@@ -70,6 +71,7 @@ void CurrentRequestManagementWidgetRepresentation::init(CurrentRequestManagement
     // Connections
     typedef CurrentRequestManagementWidget W;
     typedef CurrentRequestModel M;
+    typedef CurrentUserModel U;
 
     QItemSelectionModel *selectionModel = requestsView->selectionModel();
     QObject::connect(selectionModel,        &QItemSelectionModel::selectionChanged, w,  &W::updateRemoveButtonState);
@@ -81,6 +83,9 @@ void CurrentRequestManagementWidgetRepresentation::init(CurrentRequestManagement
     QObject::connect(addRequestButton,      &QAbstractButton::clicked,              w,  &W::submitNewRequest);
     QObject::connect(removeRequestButton,   &QAbstractButton::clicked,              w,  &W::submitSelectedRequestRemoval);
     QObject::connect(reloadRequestsButton,  &QAbstractButton::clicked,   requestModel,  &M::reload);
+
+    CurrentUserModel *userModel = dataModelFacade()->currentUserModel();
+    QObject::connect(userModel,             &U::userChanged,             requestModel,  &M::reload);
 
     // Layout
     QBoxLayout *dataControlLayout = new QHBoxLayout;

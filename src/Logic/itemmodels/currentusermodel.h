@@ -43,6 +43,9 @@ public:
 
     void reload();
 
+signals:
+    void userChanged();
+
 private:
     Q_DISABLE_COPY(CurrentUserModel)
     QScopedPointer<Impl::CurrentUserModelRepresentation> m;
