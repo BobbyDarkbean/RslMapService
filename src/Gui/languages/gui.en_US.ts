@@ -63,6 +63,21 @@
     </message>
 </context>
 <context>
+    <name>Rsl::MapService::CurrentRequestManagementWidget</name>
+    <message>
+        <source>REQUESTS</source>
+        <translation>Requests</translation>
+    </message>
+    <message>
+        <source>CONFIRM_REMOVE_TITLE</source>
+        <translation>Remove request</translation>
+    </message>
+    <message>
+        <source>CONFIRM_REMOVE_TEXT</source>
+        <translation>Selected requests will be completely removed from the database. Are you sure you want to proceed?</translation>
+    </message>
+</context>
+<context>
     <name>Rsl::MapService::EmployeeManagementWidget</name>
     <message>
         <source>EMPLOYEES</source>

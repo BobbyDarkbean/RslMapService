@@ -63,6 +63,21 @@
     </message>
 </context>
 <context>
+    <name>Rsl::MapService::CurrentRequestManagementWidget</name>
+    <message>
+        <source>REQUESTS</source>
+        <translation>Требования</translation>
+    </message>
+    <message>
+        <source>CONFIRM_REMOVE_TITLE</source>
+        <translation>Удаление требования</translation>
+    </message>
+    <message>
+        <source>CONFIRM_REMOVE_TEXT</source>
+        <translation>Выделенные требования будут безвозвратно удалены из базы данных. Вы уверены, что хотите продолжить?</translation>
+    </message>
+</context>
+<context>
     <name>Rsl::MapService::EmployeeManagementWidget</name>
     <message>
         <source>EMPLOYEES</source>
