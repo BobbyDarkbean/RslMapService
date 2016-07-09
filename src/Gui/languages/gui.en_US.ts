@@ -36,16 +36,6 @@
         <translation>Remove</translation>
     </message>
     <message>
-        <source>CARD_NUMBER</source>
-        <comment>labeltext</comment>
-        <translation>Card number:</translation>
-    </message>
-    <message>
-        <source>NAME</source>
-        <comment>labeltext</comment>
-        <translation>Name:</translation>
-    </message>
-    <message>
         <source>ADD</source>
         <translation>Add</translation>
     </message>
@@ -64,10 +54,6 @@
         <translation>Users</translation>
     </message>
     <message>
-        <source>NEW_USER</source>
-        <translation>New user</translation>
-    </message>
-    <message>
         <source>CONFIRM_REMOVE_TITLE</source>
         <translation>Remove user</translation>
     </message>
@@ -81,10 +67,6 @@
     <message>
         <source>EMPLOYEES</source>
         <translation>Employees</translation>
-    </message>
-    <message>
-        <source>NEW_EMPLOYEE</source>
-        <translation>New employee</translation>
     </message>
     <message>
         <source>CONFIRM_REMOVE_TITLE</source>

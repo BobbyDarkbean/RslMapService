@@ -36,16 +36,6 @@
         <translation>Удалить</translation>
     </message>
     <message>
-        <source>CARD_NUMBER</source>
-        <comment>labeltext</comment>
-        <translation>Номер билета:</translation>
-    </message>
-    <message>
-        <source>NAME</source>
-        <comment>labeltext</comment>
-        <translation>Имя:</translation>
-    </message>
-    <message>
         <source>ADD</source>
         <translation>Добавить</translation>
     </message>
@@ -64,10 +54,6 @@
         <translation>Читатели</translation>
     </message>
     <message>
-        <source>NEW_USER</source>
-        <translation>Новый читатель</translation>
-    </message>
-    <message>
         <source>CONFIRM_REMOVE_TITLE</source>
         <translation>Удаление читателя</translation>
     </message>
@@ -81,10 +67,6 @@
     <message>
         <source>EMPLOYEES</source>
         <translation>Сотрудники</translation>
-    </message>
-    <message>
-        <source>NEW_EMPLOYEE</source>
-        <translation>Новый сотрудник</translation>
     </message>
     <message>
         <source>CONFIRM_REMOVE_TITLE</source>
