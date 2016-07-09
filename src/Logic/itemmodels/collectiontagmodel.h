@@ -14,6 +14,8 @@ struct CollectionTagModelRepresentation;
 
 class RMS_LOGIC_SHARED CollectionTagModel : public QAbstractListModel
 {
+    Q_OBJECT
+
 public:
     enum DataRole {
         DataRole_Tag    = Qt::DisplayRole,
