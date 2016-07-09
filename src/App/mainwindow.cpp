@@ -49,7 +49,7 @@ void MainWindowRepresentation::init(MainWindow *w)
     centralWidget->setCurrentIndex(requestManagementWidgetIndex);
 
     // Widgets
-    CurrentUserManagementWidget *userManagementWidget = new CurrentUserManagementWidget(w);
+    CurrentUserManagementWidget *userManagementWidget = new CurrentUserManagementWidget;
 
     // Docks
     currentUsersDock = new QDockWidget(w);
