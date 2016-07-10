@@ -7,6 +7,7 @@
 #include <QEvent>
 #include "datamodelfacade.h"
 #include "itemmodels/collectiontagmodel.h"
+#include "itemmodels/requeststatusmodel.h"
 #include "itemmodels/currentusermodel.h"
 #include "callnumber.h"
 #include "rms_global.h"
@@ -33,6 +34,9 @@ struct CurrentRequestEditorRepresentation
     QComboBox *docTypeBox;
     QSpinBox *itemCountBox;
     QComboBox *statusBox;
+
+    CollectionTagModel *collectionTagModel;
+    RequestStatusModel *requestStatusModel;
 };
 
 void CurrentRequestEditorRepresentation::init(CurrentRequestEditor *w)
@@ -48,6 +52,9 @@ void CurrentRequestEditorRepresentation::init(CurrentRequestEditor *w)
     itemCountBox = new QSpinBox;
     statusBox = new QComboBox;
 
+    collectionTagModel = new CollectionTagModel(w);
+    requestStatusModel = new RequestStatusModel(w);
+
     // Initialization
     shelfBox->setRange(ShelfNumberMinimum, ShelfNumberMaximum);
     itemCountBox->setRange(ItemCountMinimum, ItemCountMaximum);
@@ -62,7 +69,12 @@ void CurrentRequestEditorRepresentation::init(CurrentRequestEditor *w)
     docTitleBox->setWordWrapMode(QTextOption::WordWrap);
 
     userBox->setModel(dataModelFacade()->currentUserModel());
-    collectionBox->setModel(new CollectionTagModel(w));
+    collectionBox->setModel(collectionTagModel);
+    statusBox->setModel(requestStatusModel);
+
+    // Connections
+    void (QComboBox::*comboBoxCurrentIndexChanged)(int) = &QComboBox::currentIndexChanged;
+    QObject::connect(statusBox,     comboBoxCurrentIndexChanged,    requestStatusModel,     &RequestStatusModel::setCurrentState);
 
     // Layout
     QBoxLayout *userLayout = new QVBoxLayout;
@@ -130,8 +142,7 @@ void CurrentRequestEditorRepresentation::retranslateUi()
     for (int i = DocumentType_MIN; i <= DocumentType_MAX; ++i)
         docTypeBox->addItem(toString(DocumentType(i)), i);
 
-    for (int i = RequestStatus_MIN; i <= RequestStatus_MAX; ++i)
-        statusBox->addItem(toString(RequestStatus(i)), i);
+    requestStatusModel->reload();
 }
 
 void CurrentRequestEditorRepresentation::applyMode(bool presentationMode)
