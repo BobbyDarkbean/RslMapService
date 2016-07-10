@@ -144,7 +144,17 @@ void CurrentRequestManagementWidget::changeEvent(QEvent *e)
 
 void CurrentRequestManagementWidget::submitNewRequest()
 {
+    CurrentUserModel *userModel = dataModelFacade()->currentUserModel();
+    if (!userModel->rowCount()) {
+        emit requestAppendingPerformed(false);
+        return;
+    }
+
+    QModelIndex firstRecordIndex = userModel->index(0);
+    int defaultUserId = userModel->data(firstRecordIndex, CurrentUserModel::DataRole_Id).toInt();
+
     Request request;
+    request.setUserId(defaultUserId);
 
     bool dataAppended = m->requestModel->appendData(request);
     emit requestAppendingPerformed(dataAppended);
