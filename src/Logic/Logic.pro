@@ -12,10 +12,13 @@ INCLUDEPATH += \
 LIBS += -L../bin -lRmsCore -lRmsData
 
 include(itemmodels/ItemModels.pri)
+include(requeststates/RequestStates.pri)
 
 HEADERS += \
     datamodelfacade.h \
     defaultsignaltrigger.h \
+    requeststate.h \
+    requeststatemachine.h \
     rmslogic_module.h \
     rmslogic_shared.h \
     signaltrigger.h \
@@ -24,6 +27,8 @@ HEADERS += \
 SOURCES += \
     datamodelfacade.cpp \
     defaultsignaltrigger.cpp \
+    requeststate.cpp \
+    requeststatemachine.cpp \
     rmslogic_module.cpp \
     signaltrigger.cpp \
     workflow.cpp
