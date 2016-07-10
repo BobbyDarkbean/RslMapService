@@ -82,7 +82,8 @@ enum RequestStatus
     RequestStatus_PutOnHold,
 
     RequestStatus_MIN = RequestStatus_Filling,
-    RequestStatus_MAX = RequestStatus_PutOnHold
+    RequestStatus_MAX = RequestStatus_PutOnHold,
+    RequestStatus_COUNT
 };
 
 RMS_CORE_SHARED QString toString(DocumentType dt);
